@@ -1,0 +1,13 @@
+%h1.text-center ログイン（仮）
+
+.container
+  = form_for(:session, url: login_path) do |f|
+    = f.label :email
+    = f.email_field :email, class: "form-control"
+
+    = f.label :password
+    = f.password_field :password, class: "form-control"
+
+    = f.submit "ログイン", class: "btn btn-primary mt-2"
+  %p
+    = link_to "新規登録はこちら", signup_path
