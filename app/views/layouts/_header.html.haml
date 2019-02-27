@@ -1,0 +1,13 @@
+%header
+  %nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top
+    .container-fluid
+      %a.navbar-brand{href: "/"}
+        = image_tag "logo.png", size: "170x50"
+      %button.navbar-toggler{type: "button", "data-toggle" => "collapse", "data-target" => "#navbarResponsive"}
+        %span.navbar-toggler-icon
+      .collapse.navbar-collapse#navbarResponsive
+        %ul.navbar-nav.ml-auto
+          %li.nav-item
+            = link_to "新規登録", "#", class: "nav-link"
+          %li.nav-item
+            = link_to "ログイン", "#", class: "nav-link"
