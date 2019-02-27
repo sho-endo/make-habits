@@ -1,2 +1,20 @@
-%h1 StaticPages#home
-%p Find me in app/views/static_pages/home.html.haml
+%main
+  .background-img
+    = image_tag "run.jpg", style: "width: 100%;"
+    .img-caption
+      %h3 習慣づくりの第１歩
+      %h1.display-2 MakeHabits
+  .container-fluid.padding.bg-light
+    .row.welcome.text-center
+      .col-12
+        %h1.display-4 What is MakeHabits ?
+      %hr
+      .col-12
+        %p.lead.description
+          習慣づくりに役立つ自分ルールを作成するアプリです。
+          %br
+          新しい習慣づくりはもちろん、悪い習慣を断ち切るためにも使えます。
+      .offset-md-2.col-md-4
+        = link_to "新規登録", "#", class: "btn btn-primary btn-block my-3"
+      .col-md-4
+        = link_to "ログイン", "#", class: "btn btn-success btn-block my-3"
