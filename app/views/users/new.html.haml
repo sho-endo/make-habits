@@ -1,15 +1,15 @@
-%h1.text-center ユーザー登録（仮）
-
 .container
-  = form_for(@user) do |f|
-    = render "shared/error_messages", object: f.object
-    = f.label :name
-    = f.text_field :name, class: "form-control"
+  .card.card-container
+    = image_tag "logo.png", size: "200x55", class: "mx-auto"
+    = form_for(@user) do |f|
+      = render "shared/error_messages", object: f.object
+      = f.text_field :name, class: "form-control placeholder mt-5 mb-4", placeholder: "ユーザー名"
 
-    = f.label :email
-    = f.email_field :email, class: "form-control"
+      = f.email_field :email, class: "form-control placeholder mb-4", placeholder: "メールアドレス"
 
-    = f.label :password
-    = f.password_field :password, class: "form-control"
+      = f.password_field :password, class: "form-control placeholder mb-4", placeholder: "パスワード（６文字以上）"
 
-    = f.submit "新規登録", class: "btn btn-primary mt-2"
+      = f.password_field :password_confirmation, class: "form-control placeholder mb-5", placeholder: "パスワード（確認）"
+
+      = f.submit "新規登録", class: "btn btn-primary btn-block"
+      = link_to "すでにアカウントをお持ちの場合", login_path, class: "invite-text"

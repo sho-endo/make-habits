@@ -4,7 +4,14 @@
   height: 100%;
   width: 100%;
 }
-
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.page-wrapper {
+  flex: 1;  // footerを最下部に固定するため
+}
 // header
 .navbar {
   padding: .8rem;
@@ -54,6 +61,26 @@
 .description {
   line-height: 200%;
 }
+
+
+// signup, login
+.card-container {
+  background-color: #f7f7f7;
+  padding: 50px;
+  margin: 2rem auto;
+  max-width: 400px;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+}
+.placeholder {
+  font-size: .8rem;
+  color: #555;
+}
+.invite-text {
+  display: inline-block;
+  margin-top: .5rem;
+  font-size: .9rem;
+}
+
 
 // footer
 footer {
