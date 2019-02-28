@@ -8,6 +8,10 @@
     = f.label :password
     = f.password_field :password, class: "form-control"
 
-    = f.submit "ログイン", class: "btn btn-primary mt-2"
+    = f.label :remember_me, class: "checkbox inline" do
+      = f.check_box :remember_me
+      %span このパソコンを記憶する
+
+    = f.submit "ログイン", class: "btn btn-primary btn-block mt-2"
   %p
     = link_to "新規登録はこちら", signup_path
