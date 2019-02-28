@@ -1,17 +1,14 @@
-%h1.text-center ログイン（仮）
-
 .container
-  = form_for(:session, url: login_path) do |f|
-    = f.label :email
-    = f.email_field :email, class: "form-control"
+  .card.card-container
+    = image_tag "logo.png", size: "200x55", class: "mx-auto"
+    = form_for(:session, url: login_path) do |f|
+      = f.email_field :email, class: "form-control placeholder mt-5 mb-4", placeholder: "メールアドレス"
 
-    = f.label :password
-    = f.password_field :password, class: "form-control"
+      = f.password_field :password, class: "form-control placeholder mb-3", placeholder: "パスワード"
 
-    = f.label :remember_me, class: "checkbox inline" do
-      = f.check_box :remember_me
-      %span このパソコンを記憶する
+      = f.label :remember_me, class: "checkbox inline mb-4" do
+        = f.check_box :remember_me
+        %span.ml-1 次回から自動でログインする
 
-    = f.submit "ログイン", class: "btn btn-primary btn-block mt-2"
-  %p
-    = link_to "新規登録はこちら", signup_path
+      = f.submit "ログイン", class: "btn btn-success btn-block mt-2"
+      = link_to "パスワードをお忘れの場合", "#", class: "invite-text"
