@@ -1,0 +1,6 @@
+= @user.name + "さん"
+
+MakeHabitsをご利用いただきありがとうございます！
+下記のリンクにアクセスしてアカウントを有効化してください。
+（アカウントが有効化されていないとパスワードを変更することができません。）
+= edit_account_activation_url(@user.activation_token, email: @user.email)
