@@ -1,0 +1,13 @@
+%h1
+  パスワードをリセットする（仮）
+
+= form_for(@user, url: password_reset_path(params[:id])) do |f|
+  = render "shared/error_messages", object: f.object
+
+  = hidden_field_tag :email, @user.email
+
+  = f.password_field :password, class: "form-control placeholder", placeholder: "パスワード（６文字以上）"
+
+  = f.password_field :password_confirmation, class: "form-control placeholder", placeholder: "パスワード（確認）"
+
+  = f.submit "パスワードをリセットする", class: "btn btn-primary"

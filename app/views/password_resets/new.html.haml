@@ -1,0 +1,7 @@
+.container
+  %h1
+    パスワードをリセット（仮）
+  = form_for(:password_reset, url: password_resets_path) do |f|
+    = f.email_field :email, class: "form-control placeholder", placeholder: "メールアドレス"
+
+    = f.submit "パスワードをリセット", class: "btn btn-primary"
