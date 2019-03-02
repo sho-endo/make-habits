@@ -1,7 +1,14 @@
-.container
-  %h1
-    パスワードをリセット（仮）
-  = form_for(:password_reset, url: password_resets_path) do |f|
-    = f.email_field :email, class: "form-control placeholder", placeholder: "メールアドレス"
-
-    = f.submit "パスワードをリセット", class: "btn btn-primary"
+.container.password-reset-wrapper
+  .row
+    .col-sm-10.offset-sm-1
+      %h2.heading
+        パスワードをリセット
+      %p
+        登録したメールアドレスを入力してください。
+      %p
+        パスワード変更ページのURLを記載したメールを送信します。
+      = form_for(:password_reset, url: password_resets_path) do |f|
+        = f.email_field :email, class: "form-control placeholder mt-3", placeholder: "メールアドレス"
+        %div
+          = f.submit "メールを送信する", class: "btn btn-secondary mt-4"
+        = link_to "ログインはこちら", login_path, class: "invite-text display-block"

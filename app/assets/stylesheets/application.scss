@@ -1,6 +1,6 @@
- @import "bootstrap";
+@import "bootstrap";
 
- html, body {
+html, body {
   height: 100%;
   width: 100%;
 }
@@ -12,6 +12,7 @@ body {
 .page-wrapper {
   flex: 1;  // footerを最下部に固定するため
 }
+
 // header
 .navbar {
   padding: .8rem;
@@ -62,7 +63,6 @@ body {
   line-height: 200%;
 }
 
-
 // signup, login
 .card-container {
   background-color: #f7f7f7;
@@ -77,10 +77,20 @@ body {
 }
 .invite-text {
   display: inline-block;
-  margin-top: .5rem;
+  margin-top: .8rem;
   font-size: .9rem;
 }
 
+// password-reset
+.password-reset-wrapper {
+  max-width: 800px;
+  .heading {
+    font-weight: 600;
+    border-bottom: .7px solid #ccc;
+    margin: 3rem 0 2rem;
+    padding-bottom: .7rem
+  }
+}
 
 // footer
 footer {
@@ -125,5 +135,21 @@ footer {
   }
   .description {
     font-size: 90%;
+  }
+  .invite-text {
+    display: inline-block;
+    margin-top: 1.2rem;
+    font-size: .7rem;
+  }
+  .password-reset-wrapper {
+    h2 {
+      font-size: 1.5rem;
+    }
+    p {
+      font-size: .8rem;
+    }
+    .btn {
+      width: 100%;
+    }
   }
 }
