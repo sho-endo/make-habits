@@ -9,6 +9,10 @@ ja:
           has_many: "%{record}が存在しているので削除できません"
     models:
       user: ユーザー
+      habit: 習慣
+      make: 作りたい習慣
+      quit: やめたい習慣
+      rule: ルール
     attributes:
       user:
         id: ID
@@ -24,6 +28,17 @@ ja:
         activated:
         reset_digest:
         reset_sent_at:
+      habit:
+        title: 習慣名
+        type:
+        user_id:
+        created_at: 登録日時
+        updated_at: 更新日時
+      rule:
+        content: ルール
+        habit_id:
+        created_at: 登録日時
+        updated_at: 更新日時
   date:
     abbr_day_names:
     - 日
