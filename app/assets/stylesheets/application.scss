@@ -9,6 +9,11 @@ body {
   display: flex;
   flex-direction: column;
 }
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 .page-wrapper {
   flex: 1;  // footerを最下部に固定するため
 }
@@ -22,6 +27,11 @@ body {
 }
 .nav-link {
   font-size: 1.1em !important;
+}
+
+// error message
+.error-message {
+  font-size: .8rem;
 }
 
 // top page
