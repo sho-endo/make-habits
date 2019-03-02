@@ -1,5 +1,6 @@
 - if object.errors.any?
-  %ul
-    - object.errors.full_messages.each do |msg|
-      %li 
-        =msg
+  .error-message.alert.alert-warning.mt-3
+    %ul
+      - object.errors.full_messages.each do |msg|
+        %li.py-1
+          =msg

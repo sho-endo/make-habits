@@ -9,7 +9,7 @@
 
       = f.password_field :password, class: "form-control placeholder mb-4", placeholder: "パスワード（６文字以上）"
 
-      = f.password_field :password_confirmation, class: "form-control placeholder mb-5", placeholder: "パスワード（確認）"
+      = f.password_field :password_confirmation, class: "form-control placeholder mb-5", placeholder: "パスワード（確認のためにもう一度入力してください）"
 
       = f.submit "新規登録", class: "btn btn-primary btn-block"
       = link_to "すでにアカウントをお持ちの場合", login_path, class: "invite-text"
