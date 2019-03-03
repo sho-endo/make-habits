@@ -44,6 +44,10 @@ gem 'erb2haml'
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
 
+# Twitter login
+gem 'omniauth'
+gem 'omniauth-twitter'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'

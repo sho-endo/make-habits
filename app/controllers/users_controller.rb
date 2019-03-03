@@ -19,6 +19,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def twitter_login
+    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+    if user
+      log_in user
+      flash[:success] = "ログインしました"
+      redirect_to user
+    else
+      flash[:warning] = "ログインに失敗しました"
+      redirect_to new_user_path
+    end
+  end
+
   private
     def user_params
       params
