@@ -43,6 +43,7 @@ gem 'erb2haml'
 # bootstrap
 gem 'bootstrap', '~> 4.1.1'
 gem 'jquery-rails'
+gem 'font-awesome-sass', '~> 5.6.1'
 
 # Twitter login
 gem 'omniauth'

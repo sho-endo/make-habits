@@ -1,17 +1,19 @@
 .container
   .card.card-container
     = image_tag "logo.png", size: "200x55", class: "mx-auto"
+    = link_to  '/auth/twitter', class: "btn btn-twitter mt-4" do
+      = icon("fab", "twitter", class: "mr-1")
+      %span Twitterで登録
+    .divide-text-signup またはメールアドレスで登録
     = form_for(@user) do |f|
       = render "shared/error_messages", object: f.object
-      = f.text_field :name, class: "form-control placeholder mt-5 mb-4", placeholder: "ユーザー名"
+      = f.text_field :name, class: "form-control placeholder mt-4 mb-4", placeholder: "ユーザー名"
 
       = f.email_field :email, class: "form-control placeholder mb-4", placeholder: "メールアドレス"
 
       = f.password_field :password, class: "form-control placeholder mb-4", placeholder: "パスワード（６文字以上）"
 
-      = f.password_field :password_confirmation, class: "form-control placeholder mb-5", placeholder: "パスワード（確認のためにもう一度入力してください）"
+      = f.password_field :password_confirmation, class: "form-control placeholder", placeholder: "パスワード（確認）"
 
-      = f.submit "新規登録", class: "btn btn-primary btn-block"
+      = f.submit "新規登録", class: "btn btn-primary btn-block btn-signup mt-4"
       = link_to "すでにアカウントをお持ちの場合", login_path, class: "invite-text"
-      %br
-      = link_to "Twitteアカウントでログイン", '/auth/twitter'
