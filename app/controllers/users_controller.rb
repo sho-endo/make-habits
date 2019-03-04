@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  before_action :logged_in_user, only: [:show]
+  before_action :check_login, only: [:index, :show]
+  before_action :check_admin, only: [:index]
+
+  def index
+
+  end
 
   def new
     @user = User.new
@@ -43,11 +48,15 @@ class UsersController < ApplicationController
                 :password_confirmation)
     end
 
-    def logged_in_user
+    def check_login
       unless logged_in?
         store_location
         flash[:warning] = "ログインしてください"
         redirect_to login_url
       end
+    end
+
+    def check_admin
+      redirect_to(current_user) unless current_user.admin?
     end
 end
