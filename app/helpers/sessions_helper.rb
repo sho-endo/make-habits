@@ -25,6 +25,10 @@ module SessionsHelper
     !!current_user
   end
 
+  def logged_in_by_twitter?
+    current_user.provider == "twitter"
+  end
+
   def forget(user)
     user.forget
     cookies.delete(:user_id)

@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
   before_action :check_login, only: [:index, :show, :edit, :update_profile, :update_password]
+  before_action :forbid_twitter_login_user, only: [:edit, :update_profile, :update_password]
+  before_action :check_correct_user, only: [:show, :edit, :update_profile, :update_password]
   before_action :check_admin, only: [:index]
 
   def index
@@ -19,6 +21,18 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       render :new
+    end
+  end
+
+  def twitter_login
+    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+    if user
+      log_in user
+      flash[:success] = "ログインしました"
+      redirect_back_or user
+    else
+      flash[:warning] = "ログインに失敗しました"
+      redirect_to new_user_path
     end
   end
 
@@ -60,18 +74,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def twitter_login
-    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
-    if user
-      log_in user
-      flash[:success] = "ログインしました"
-      redirect_back_or user
-    else
-      flash[:warning] = "ログインに失敗しました"
-      redirect_to new_user_path
-    end
-  end
-
   private
     def user_params
       params
@@ -88,6 +90,15 @@ class UsersController < ApplicationController
         flash[:warning] = "ログインしてください"
         redirect_to login_url
       end
+    end
+
+    def forbid_twitter_login_user
+      redirect_to(current_user) if current_user.provider == "twitter"
+    end
+
+    def check_correct_user
+      @user = User.find(params[:id])
+      redirect_to(current_user) unless @user == current_user
     end
 
     def check_admin
