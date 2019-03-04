@@ -9,7 +9,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX },
                     uniqueness: { case_sensitive: false }
   has_secure_password
-  validates :password, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_many :habits, dependent: :destroy
   has_many :makes, dependent: :destroy
@@ -66,6 +66,12 @@ class User < ApplicationRecord
 
   def send_activation_email
     UserMailer.account_activation(self).deliver_now
+  end
+
+  def reactivate
+    update_attribute(:activated, false)
+    create_activation_digest and self.save
+    send_activation_email
   end
 
   def create_reset_digest
