@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   get '/admin/users', to: 'users#index'
   patch '/users/:id/profile', to: 'users#update_profile', as: 'update_profile'
   patch '/users/:id/password', to: 'users#update_password', as: 'update_password'
-  resources :users, except: [:index, :update ,:destroy]
+  get '/users/:id/delete', to: 'users#delete', as: 'delete_page'
+  resources :users, except: [:index, :update]
   resources :account_activations, only: [:edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 end
