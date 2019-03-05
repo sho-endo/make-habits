@@ -135,7 +135,7 @@ ul {
   @include form-divide(100px)
 }
 
-// password-reset
+// password reset
 .password-reset-wrapper {
   max-width: 800px;
   .heading {
@@ -146,6 +146,22 @@ ul {
   }
 }
 
+
+// user edit
+.user-edit-wrapper {
+  .nav-tabs.nav-justified {
+    border-bottom: none;
+  .select-edit-tab {
+    cursor: pointer;
+    color: #dee2e6;
+    border-bottom: 1px solid #dee2e6;
+    }
+    .select-edit-tab.active {
+      color: rgba(0, 0, 0, 0.7);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.7);
+    }
+  }
+}
 // footer
 footer {
   height: 10vh;
@@ -219,5 +235,16 @@ footer {
   }
   .divide-text-login {
     @include form-divide(70px)
+  }
+  .user-edit-wrapper {
+    .select-edit-tab {
+      font-size: .8rem;
+    }
+    .placeholder {
+      font-size: .6rem;
+    }
+    .btn-signup {
+      font-size: .8rem;
+    }
   }
 }
