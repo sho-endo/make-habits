@@ -1,2 +1,9 @@
 %h1 ユーザー一覧（管理画面）
-  
+
+%ul
+- @users.each do |user|
+  %li
+    = "#{user.name} :"
+    = user.email
+    - unless user.admin?
+      = link_to "削除", user_path(user), method: :delete, data: { confirm: "本当に削除しますか"}

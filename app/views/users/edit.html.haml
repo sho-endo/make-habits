@@ -24,3 +24,5 @@
           = f.password_field :password_confirmation, class: "form-control placeholder", placeholder: "新しいパスワード（確認）"
 
           = f.submit "パスワードを更新する", class: "btn btn-info btn-block btn-signup mt-4"
+    - unless current_user.admin?
+      = link_to "アカウントを削除する場合はこちらから", delete_page_path(@user)

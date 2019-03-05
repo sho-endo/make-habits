@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
-  before_action :check_login, only: [:index, :show, :edit, :update_profile, :update_password]
+  before_action :check_login, only: [:index, :show, :edit, :update_profile, :update_password, :delete, :destroy]
   before_action :forbid_twitter_login_user, only: [:edit, :update_profile, :update_password]
-  before_action :check_correct_user, only: [:show, :edit, :update_profile, :update_password]
+  before_action :check_correct_user, only: [:show, :edit, :update_profile, :update_password, :delete]
   before_action :check_admin, only: [:index]
+  before_action :check_destroy, only: [:destroy]
 
   def index
-
+    @users = User.all
   end
 
   def new
@@ -74,6 +75,23 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def delete
+    @user = User.find(params[:id])
+  end
+
+  def destroy
+    user = User.find(params[:id])
+    redirect_back(fallback_location: root_url) and return if user.admin?
+    user.destroy
+    if current_user.admin?
+      redirect_to admin_users_path
+    else
+      flash[:success] = "アカウントを削除しました"
+      redirect_to root_url
+    end
+
+  end
+
   private
     def user_params
       params
@@ -103,5 +121,10 @@ class UsersController < ApplicationController
 
     def check_admin
       redirect_to(current_user) unless current_user.admin?
+    end
+
+    def check_destroy
+      @user = User.find(params[:id])
+      redirect_to(current_user) unless (current_user.admin? || @user == current_user)
     end
 end
