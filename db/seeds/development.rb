@@ -1,12 +1,12 @@
-User.create(
+User.create!(
   name: "tom",
   email: "tom@ne.jp",
   password: "foobar",
   admin: true,
-  activated: true
+  activated: true,
 )
 
-User.create(
+User.create!(
   name: "john",
   email: "john@ne.jp",
   password: "foobar",
@@ -16,6 +16,6 @@ User.create(
   User.create(
     name: "hoge",
     email: "test#{i}@ne.jp",
-    password: "foobar"
+    password: "foobar",
   )
 end
