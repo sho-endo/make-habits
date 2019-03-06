@@ -1,5 +1,5 @@
 class PasswordResetsController < ApplicationController
-  before_action :get_user, only: [:edit, :update]
+  before_action :set_user, only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
 
@@ -32,7 +32,7 @@ class PasswordResetsController < ApplicationController
       # allow_nill: trueを実装しても不具合が起こらないようにするため
       @user.errors.add(:password, :blank)
       render :edit
-    elsif @user.update_attributes(user_params)
+    elsif @user.update(user_params)
       log_in @user
       @user.update_attribute(:reset_digest, nil)
       flash[:success] = "パスワードを更新しました"
@@ -48,13 +48,13 @@ class PasswordResetsController < ApplicationController
       params.require(:user).permit(:password, :password_confirmation)
     end
 
-    def get_user
+    def set_user
       @user = User.find_by(email: params[:email])
     end
 
     def valid_user
-      unless(@user && @user.activated? &&
-             @user.authenticated?(:reset, params[:id]))
+      unless @user && @user.activated? &&
+             @user.authenticated?(:reset, params[:id])
         flash[:danger] = "このリンクは無効です"
         redirect_to root_url
       end

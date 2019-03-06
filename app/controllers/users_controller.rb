@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def twitter_login
-    user = User.find_or_create_from_auth_hash(request.env['omniauth.auth'])
+    user = User.find_or_create_from_auth_hash(request.env["omniauth.auth"])
     if user
       log_in user
       flash[:success] = "ログインしました"
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   def update_profile
     @user = User.find(params[:id])
     before_change_email = @user.email
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       @user.reactivate unless @user.email == before_change_email
       flash[:success] = "プロフィールを更新しました"
       redirect_to @user
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
       @user.errors.add(:password, :blank)
       render :edit and return
     end
-    if @user.update_attributes(user_params)
+    if @user.update(user_params)
       flash[:success] = "パスワードを更新しました"
       redirect_to @user
     else
@@ -82,24 +82,24 @@ class UsersController < ApplicationController
   def destroy
     user = User.find(params[:id])
     redirect_back(fallback_location: root_url) and return if user.admin?
-    user.destroy
+    user.destroy!
     if current_user.admin?
       redirect_to admin_users_path
     else
       flash[:success] = "アカウントを削除しました"
       redirect_to root_url
     end
-
   end
 
   private
+
     def user_params
-      params
-        .require(:user)
-        .permit(:name,
-                :email,
-                :password,
-                :password_confirmation)
+      params.
+        require(:user).
+        permit(:name,
+               :email,
+               :password,
+               :password_confirmation)
     end
 
     def check_login
@@ -125,6 +125,6 @@ class UsersController < ApplicationController
 
     def check_destroy
       @user = User.find(params[:id])
-      redirect_to(current_user) unless (current_user.admin? || @user == current_user)
+      redirect_to(current_user) unless current_user.admin? || @user == current_user
     end
 end

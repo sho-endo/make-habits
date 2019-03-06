@@ -20,7 +20,7 @@ Rails.application.configure do
 
   # Disable serving static files from the `/public` folder by default since
   # Apache or NGINX already handles this.
-  config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
+  config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
@@ -54,7 +54,7 @@ Rails.application.configure do
   config.log_level = :debug
 
   # Prepend all log lines with the following tags.
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
@@ -69,16 +69,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'make-habits.herokuapp.com'
+  host = "make-habits.herokuapp.com"
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
-    :address        => 'smtp.sendgrid.net',
-    :port           => '587',
-    :authentication => :plain,
-    :user_name      => ENV['SENDGRID_USERNAME'],
-    :password       => ENV['SENDGRID_PASSWORD'],
-    :domain         => 'heroku.com',
-    :enable_starttls_auto => true
+    address: "smtp.sendgrid.net",
+    port: "587",
+    authentication: :plain,
+    user_name: ENV["SENDGRID_USERNAME"],
+    password: ENV["SENDGRID_PASSWORD"],
+    domain: "heroku.com",
+    enable_starttls_auto: true,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
