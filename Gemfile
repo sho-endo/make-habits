@@ -49,6 +49,9 @@ gem 'font-awesome-sass', '~> 5.6.1'
 gem 'omniauth'
 gem 'omniauth-twitter'
 
+# pagination
+gem 'kaminari'
+
 group :development, :test do
   gem 'pry-rails'
   gem 'pry-byebug'
