@@ -1,4 +1,9 @@
-%h1 ユーザー削除ページ
-
-%p アカウント消したらデータは復旧できません的な案内文
-= link_to "削除", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？"}
+.container.user-delete-wrapper
+  .card.card-container
+    .jumbotron
+      %ul
+        %li.mb-4
+          アカウントを削除すると、これまでに作成されたデータは全て削除されます。
+        %li
+          削除されたデータを復旧することはできません。
+    = link_to "アカウントを削除する", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"
