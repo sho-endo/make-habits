@@ -161,7 +161,29 @@ ul {
       border-bottom: 1px solid rgba(0, 0, 0, 0.7);
     }
   }
+  .invite-delete {
+    display: block;
+    color: #81bef7;
+    &:hover {
+      text-decoration:  none;
+      color: darken(#81bef7, 10%)
+    }
+  }
 }
+
+// user delete
+.user-delete-wrapper {
+  .jumbotron {
+    background-color: #ffeff9;
+    border: 1px solid #f9d9f8;
+    padding: 2rem 2rem;
+  }
+  li {
+    opacity: 0.7;
+    font-size: .9rem;
+  }
+}
+
 // footer
 footer {
   height: 10vh;
@@ -244,6 +266,16 @@ footer {
       font-size: .6rem;
     }
     .btn-signup {
+      font-size: .8rem;
+    }
+  }
+  .user-delete-wrapper {
+    .jumbotron {
+      li {
+        font-size: .8rem;
+      }
+    }
+    a {
       font-size: .8rem;
     }
   }
