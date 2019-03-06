@@ -184,6 +184,29 @@ ul {
   }
 }
 
+// user index
+.user-index-wrapper {
+  width: 100%;
+  padding: .5rem;
+  table {
+    table-layout: fixed;
+  }
+  .user-id {
+    width: 10vw;
+  }
+  .user-name {
+    width: 20vw;
+    overflow: scroll;
+  }
+  .user-email {
+    width: 50vw;
+    overflow: scroll;
+  }
+  .user-delete {
+    width: 10vw;
+  }
+}
+
 // footer
 footer {
   height: 10vh;
@@ -277,6 +300,14 @@ footer {
     }
     a {
       font-size: .8rem;
+    }
+  }
+  .user-index-wrapper {
+    h1 {
+      font-size: 1.8rem;
+    }
+    th {
+      font-size: .68rem;
     }
   }
 }

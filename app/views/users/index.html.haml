@@ -1,9 +1,23 @@
-%h1 ユーザー一覧（管理画面）
-
-%ul
-- @users.each do |user|
-  %li
-    = "#{user.name} :"
-    = user.email
-    - unless user.admin?
-      = link_to "削除", user_path(user), method: :delete, data: { confirm: "本当に削除しますか"}
+.user-index-wrapper
+  %h1.text-center.my-5 ユーザー一覧
+  %table.table.table-bordered.table-striped
+    %thead
+      %th.user-id<
+        = User.human_attribute_name :id
+      %th.user-name<
+        = User.human_attribute_name :name
+      %th.user-email<
+        = User.human_attribute_name :email
+      %th.user-delete<
+    - @users.each do |user|
+      %tr
+        %td.user-id<
+          = user.id
+        %td.user-name<
+          = user.name
+        %td.user-email<
+          = user.email
+        %td.user-delete<
+          - unless user.admin?
+            = link_to "削除", user_path(user), method: :delete, data: { confirm: "本当に削除しますか？" }
+  = paginate @users

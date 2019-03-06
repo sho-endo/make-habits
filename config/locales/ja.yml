@@ -237,3 +237,10 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  views:
+    paination:
+      first: "最初へ"
+      last: "最後へ"
+      previous: "前へ"
+      next: "次へ"
+      truncate: "..."
