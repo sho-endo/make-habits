@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :check_destroy, only: [:destroy]
 
   def index
-    @users = User.all
+    @users = User.all.order(id: :asc)
   end
 
   def new

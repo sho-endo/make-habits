@@ -11,3 +11,11 @@ User.create(
   email: "john@ne.jp",
   password: "foobar",
 )
+
+50.times do |i|
+  User.create(
+    name: "hoge",
+    email: "test#{i}@ne.jp",
+    password: "foobar"
+  )
+end
