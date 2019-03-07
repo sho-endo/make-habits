@@ -17,8 +17,11 @@ class User < ApplicationRecord
 
   # ハッシュ値を返す
   def self.digest(string)
-    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
-                                                  BCrypt::Engine.cost
+    cost = if ActiveModel::SecurePassword.min_cost
+             BCrypt::Engine::MIN_COST
+           else
+             BCrypt::Engine.cost
+           end
     BCrypt::Password.create(string, cost: cost)
   end
 
@@ -47,7 +50,7 @@ class User < ApplicationRecord
 
   def remember
     self.remember_token = User.new_token
-    update_attribute(:remember_digest, User.digest(remember_token))
+    update_attribute(:remember_digest, User.digest(remember_token)) # rubocop:disable Rails/SkipsModelValidations
   end
 
   def authenticated?(attribute, token)
@@ -58,11 +61,11 @@ class User < ApplicationRecord
   end
 
   def forget
-    update_attribute(:remember_digest, nil)
+    update_attribute(:remember_digest, nil) # rubocop:disable Rails/SkipsModelValidations
   end
 
   def activate
-    update_attribute(:activated, true)
+    update_attribute(:activated, true) # rubocop:disable Rails/SkipsModelValidations
   end
 
   def send_activation_email
@@ -70,14 +73,14 @@ class User < ApplicationRecord
   end
 
   def reactivate
-    update_attribute(:activated, false)
+    update_attribute(:activated, false) # rubocop:disable Rails/SkipsModelValidations
     create_activation_digest and self.save
     send_activation_email
   end
 
   def create_reset_digest
     self.reset_token = User.new_token
-    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
+    update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now) # rubocop:disable Rails/SkipsModelValidations
   end
 
   def send_password_reset_email

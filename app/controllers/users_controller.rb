@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class UsersController < ApplicationController # rubocop:disable Metrics/ClassLength
   before_action :check_login, only: [:index, :show, :edit, :update_profile, :update_password, :delete, :destroy]
   before_action :forbid_twitter_login_user, only: [:edit, :update_profile, :update_password]
   before_action :check_correct_user, only: [:show, :edit, :update_profile, :update_password, :delete]
