@@ -12,7 +12,6 @@ ja:
       habit: 習慣
       make: 作りたい習慣
       quit: やめたい習慣
-      rule: ルール
     attributes:
       user:
         id: ID
@@ -32,11 +31,8 @@ ja:
         title: 習慣名
         type:
         user_id:
-        created_at: 登録日時
-        updated_at: 更新日時
-      rule:
-        content: ルール
-        habit_id:
+        rule1:
+        rule2:
         created_at: 登録日時
         updated_at: 更新日時
   date:
