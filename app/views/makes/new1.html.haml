@@ -1,0 +1,8 @@
+.container
+  %p
+    作りたい習慣はなんですか？
+
+  = form_for(:make, url: makes_new_2_path, method: :get) do |f|
+    = f.text_area :title, required: true, maxlength: 255, class: "form-control", placeholder: "例） 運動"
+
+    = f.submit "次へ", class: "btn btn-info"

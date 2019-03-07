@@ -1,0 +1,2 @@
+module MakesHelper
+end

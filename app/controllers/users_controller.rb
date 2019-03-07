@@ -102,14 +102,6 @@ class UsersController < ApplicationController # rubocop:disable Metrics/ClassLen
                :password_confirmation)
     end
 
-    def check_login
-      unless logged_in?
-        store_location
-        flash[:warning] = "ログインしてください"
-        redirect_to login_url
-      end
-    end
-
     def forbid_twitter_login_user
       redirect_to(current_user) if current_user.provider == "twitter"
     end
