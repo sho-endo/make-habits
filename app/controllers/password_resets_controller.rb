@@ -34,7 +34,7 @@ class PasswordResetsController < ApplicationController
       render :edit
     elsif @user.update(user_params)
       log_in @user
-      @user.update_attribute(:reset_digest, nil)
+      @user.update_attribute(:reset_digest, nil) # rubocop:disable Rails/SkipsModelValidations
       flash[:success] = "パスワードを更新しました"
       redirect_to @user
     else
