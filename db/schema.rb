@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_04_082029) do
+ActiveRecord::Schema.define(version: 2019_03_07_171959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,15 +21,9 @@ ActiveRecord::Schema.define(version: 2019_03_04_082029) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "rule1", null: false
+    t.string "rule2", null: false
     t.index ["user_id"], name: "index_habits_on_user_id"
-  end
-
-  create_table "rules", force: :cascade do |t|
-    t.string "content", null: false
-    t.bigint "habit_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["habit_id"], name: "index_rules_on_habit_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -51,5 +45,4 @@ ActiveRecord::Schema.define(version: 2019_03_04_082029) do
   end
 
   add_foreign_key "habits", "users"
-  add_foreign_key "rules", "habits"
 end
