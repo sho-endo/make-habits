@@ -31,8 +31,8 @@ ja:
         title: 習慣名
         type:
         user_id:
-        rule1:
-        rule2:
+        rule1: ルール
+        rule2: ルール
         created_at: 登録日時
         updated_at: 更新日時
   date:
