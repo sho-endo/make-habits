@@ -1,0 +1,2 @@
+module QuitsHelper
+end

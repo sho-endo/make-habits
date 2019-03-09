@@ -1,0 +1,15 @@
+.container
+  %p
+    やめたい習慣を簡単にはできないようなルールを決めましょう
+  %p
+    コツは今より少なくとも２０秒以上余計に時間がかかるようにすることです。
+  %p
+    例）ついyoutubeをみてしまう→スマホからアプリを消して、見るときはパソコンで見る
+
+  = form_for(:quit, url: quits_path) do |f|
+    = f.hidden_field :title, value: @title
+    = f.hidden_field :rule1, value: @rule1
+    = f.text_area :rule2, required: true, maxlength: 255, class: "form-control", placeholder: ""
+
+    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
+    = f.submit "次へ", class: "btn btn-info"

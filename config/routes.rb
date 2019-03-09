@@ -24,4 +24,10 @@ Rails.application.routes.draw do
   get "/makes/new/4", to: "makes#new4"
   get "/makes/new/5", to: "makes#new5"
   resources :makes, only: [:create]
+
+  get "/quits/new/1", to: "quits#new1"
+  get "/quits/new/2", to: "quits#new2"
+  get "/quits/new/3", to: "quits#new3"
+  get "/quits/new/4", to: "quits#new4"
+  resources :quits, only: [:create]
 end

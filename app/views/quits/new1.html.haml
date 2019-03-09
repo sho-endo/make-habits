@@ -1,0 +1,8 @@
+.container
+  %p
+    やめたい習慣はなんですか？
+
+  = form_for(:quit, url: quits_new_2_path, method: :get) do |f|
+    = f.text_area :title, required: true, maxlength: 255, class: "form-control", placeholder: "ついyoutubeを見てしまう"
+
+    = f.submit "次へ", class: "btn btn-info"
