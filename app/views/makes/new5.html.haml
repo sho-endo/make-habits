@@ -8,4 +8,6 @@
     = f.hidden_field :title, value: @title
     = f.hidden_field :rule1, value: @rule1
     = f.text_area :rule2, required: true, maxlength: 255, class: "form-control", value: "#{@situation}になったら〜をする"
+
+    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
     = f.submit "次へ", class: "btn btn-info"

@@ -6,6 +6,7 @@
 
   = form_for(:make, url: makes_new_4_path, method: :get) do |f|
     = f.hidden_field :title, value: @title
-    = f.text_area :rule1, required: true, maxlength: 255, class: "form-control", value: "〜をしたら、#{@norm}をする"
+    = f.text_area :rule1, required: true, maxlength: 255, class: "form-control", value: "〜をしたら、#{@norm}"
 
+    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
     = f.submit "次へ", class: "btn btn-info"

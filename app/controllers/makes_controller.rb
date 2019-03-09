@@ -1,27 +1,23 @@
 class MakesController < ApplicationController
   before_action :check_login
+  before_action :forbid_direct_access, except: [:new1]
+  before_action :set_title, only: [:new2, :new3, :new4, :new5]
+  before_action :set_rule1, only: [:new4, :new5]
 
   def new1
   end
 
   def new2
-    @title = params[:make][:title]
-    # 文字数判定はフォーム側でやる
   end
 
   def new3
-    @title = params[:make][:title]
     @norm = params[:make][:norm]
   end
 
   def new4
-    @title = params[:make][:title]
-    @rule1 = params[:make][:rule1]
   end
 
   def new5
-    @title = params[:make][:title]
-    @rule1 = params[:make][:rule1]
     @situation = params[:make][:situation]
   end
 
@@ -40,5 +36,17 @@ class MakesController < ApplicationController
 
     def make_params
       params.require(:make).permit(:title, :rule1, :rule2)
+    end
+
+    def forbid_direct_access
+      redirect_to makes_new_1_path if request.referer.nil?
+    end
+
+    def set_title
+      @title = params[:make][:title]
+    end
+
+    def set_rule1
+      @rule1 = params[:make][:rule1]
     end
 end
