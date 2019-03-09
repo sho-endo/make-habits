@@ -8,7 +8,7 @@
       %p
         パスワード変更ページのURLを記載したメールを送信します。
       = form_for(:password_reset, url: password_resets_path) do |f|
-        = f.email_field :email, class: "form-control placeholder mt-3", placeholder: "メールアドレス"
+        = f.email_field :email, required: true, class: "form-control placeholder mt-3", placeholder: "メールアドレス"
         %div
           = f.submit "メールを送信する", class: "btn btn-secondary mt-4"
         = link_to "ログインはこちら", login_path, class: "invite-text display-block"

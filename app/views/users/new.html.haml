@@ -7,13 +7,13 @@
     .divide-text-signup またはメールアドレスで登録
     = form_for(@user) do |f|
       = render "shared/error_messages", object: f.object
-      = f.text_field :name, class: "form-control placeholder mt-4 mb-4", placeholder: "ユーザー名"
+      = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mt-4 mb-4", placeholder: "ユーザー名"
 
-      = f.email_field :email, class: "form-control placeholder mb-4", placeholder: "メールアドレス"
+      = f.email_field :email, required: true, maxlength: 255, class: "form-control placeholder mb-4", placeholder: "メールアドレス"
 
-      = f.password_field :password, class: "form-control placeholder mb-4", placeholder: "パスワード（６文字以上）"
+      = f.password_field :password, required: true, maxlength: 50, class: "form-control placeholder mb-4", placeholder: "パスワード（６文字以上）"
 
-      = f.password_field :password_confirmation, class: "form-control placeholder", placeholder: "パスワード（確認）"
+      = f.password_field :password_confirmation, required: true, maxlength: 50, class: "form-control placeholder", placeholder: "パスワード（確認）"
 
       = f.submit "新規登録", class: "btn btn-primary btn-block btn-signup mt-4"
       = link_to "すでにアカウントをお持ちの場合", login_path, class: "invite-text"
