@@ -1,0 +1,13 @@
+.container
+  %p
+    ２つ目の自分ルールを作ります
+  %p
+    挫折しそうになる状況を想像してみてください
+
+  = form_for(:make, url: makes_new_5_path, method: :get) do |f|
+    = f.hidden_field :title, value: @title
+    = f.hidden_field :rule1, value: @rule1
+    = f.text_area :situation, required: true, maxlength: 150, class: "form-control", placeholder: "疲れて眠い"
+
+    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
+    = f.submit "次へ", class: "btn btn-info"

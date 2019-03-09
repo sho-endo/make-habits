@@ -1,0 +1,13 @@
+.container
+  %p
+    挫折しそうな状況になった時の対策を考えましょう
+  %p
+    どのような行動や考え方をしますか？
+
+  = form_for(:make, url: makes_path) do |f|
+    = f.hidden_field :title, value: @title
+    = f.hidden_field :rule1, value: @rule1
+    = f.text_area :rule2, required: true, maxlength: 255, class: "form-control", value: "#{@situation}になったら〜をする"
+
+    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
+    = f.submit "次へ", class: "btn btn-info"
