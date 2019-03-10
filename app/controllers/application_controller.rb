@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
         redirect_to login_url
       end
     end
+
+    def forbid_login_user
+      if logged_in?
+        flash[:warning] = "すでにログインしています"
+        redirect_to current_user
+      end
+    end
 end
