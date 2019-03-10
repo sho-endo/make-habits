@@ -1,7 +1,7 @@
 %header
   %nav.navbar.navbar-expand-md.navbar-light.bg-light.sticky-top
     .container-fluid
-      %a.navbar-brand{href: "/"}
+      %a.navbar-brand{href: "#{logged_in? ? user_path(current_user) : '/'}"}
         = image_tag "logo.png", size: "170x50"
       %button.navbar-toggler{type: "button", "data-toggle" => "collapse", "data-target" => "#navbarResponsive"}
         %span.navbar-toggler-icon
