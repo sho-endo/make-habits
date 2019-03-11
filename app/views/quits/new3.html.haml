@@ -1,14 +1,12 @@
-.container
-  %p
-    別の行動に置き換えて１つ目の自分ルールを作成します。
-  %p
-    「その状況になったら、〜を行う」という形で作ってみましょう。
-  %p
-    同時にはできない行動にしてください
+.container.quits-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
+    %p.lead
+      ついやってしまう状況を入力してください
 
-  = form_for(:quit, url: quits_new_4_path, method: :get) do |f|
-    = f.hidden_field :title, value: @title
-    = f.text_area :rule1, required: true, maxlength: 255, class: "form-control", value: "#{@situation}になったら、〜をする"
+    = form_for(:quit, url: quits_new_4_path, method: :get) do |f|
+      = f.hidden_field :title, value: @title
+      = f.text_area :situation, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex）自分の部屋で暇になったとき"
 
-    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
-    = f.submit "次へ", class: "btn btn-info"
+      = f.submit "次へ", class: "btn btn-info mt-5"

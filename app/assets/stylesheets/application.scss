@@ -248,8 +248,8 @@ ul {
   }
 }
 
-// makes new
-.makes-new-wrapper {
+// makes new, quits new
+.makes-new-wrapper, .quits-new-wrapper {
   .jumbotron {
     background-color: #f8f8f8;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
@@ -393,7 +393,7 @@ footer {
       margin: 2rem 0!important;
     }
   }
-  .makes-new-wrapper {
+  .makes-new-wrapper, .quits-new-wrapper {
     .lead {
       font-size: 1rem;
     }
@@ -407,9 +407,12 @@ footer {
       padding: 4rem 1rem;
     }
   }
-  .makes-new-wrapper {
+  .makes-new-wrapper, .quits-new-wrapper {
     .form-control, .btn{
       width: 100%;
+    }
+    .lead {
+      text-align: justify!important;
     }
   }
 }

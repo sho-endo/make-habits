@@ -33,5 +33,8 @@ Rails.application.routes.draw do
   get "/quits/new/2", to: "quits#new2"
   get "/quits/new/3", to: "quits#new3"
   get "/quits/new/4", to: "quits#new4"
+  get "/quits/new/5", to: "quits#new5"
+  get "/quits/new/6", to: "quits#new6"
+  get "/quits/new/7", to: "quits#new7"
   resources :quits, only: [:create]
 end

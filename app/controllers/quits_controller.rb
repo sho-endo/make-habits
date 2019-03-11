@@ -1,7 +1,8 @@
 class QuitsController < ApplicationController
   before_action :check_login
   before_action :forbid_direct_access, except: [:new1]
-  before_action :set_title, only: [:new2, :new3, :new4]
+  before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7]
+  before_action :set_rule1, only: [:new6, :new7]
 
   def new1
   end
@@ -10,11 +11,20 @@ class QuitsController < ApplicationController
   end
 
   def new3
-    @situation = params[:quit][:situation]
   end
 
   def new4
-    @rule1 = params[:quit][:rule1]
+    @situation = params[:quit][:situation]
+  end
+
+  def new5
+    @situation = params[:quit][:situation]
+  end
+
+  def new6
+  end
+
+  def new7
   end
 
   def create
@@ -40,5 +50,9 @@ class QuitsController < ApplicationController
 
     def set_title
       @title = params[:quit][:title]
+    end
+
+    def set_rule1
+      @rule1 = params[:quit][:rule1]
     end
 end

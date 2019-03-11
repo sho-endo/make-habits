@@ -1,0 +1,13 @@
+.container.quits-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
+    %p.lead
+      ２つ目の自分ルールを作成してください。
+
+    = form_for(:quit, url: quits_path) do |f|
+      = f.hidden_field :title, value: @title
+      = f.hidden_field :rule1, value: @rule1
+      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "ex）スマホからアプリを消して、YouTubeはパソコンで見るようにする。"
+
+      = f.submit "完成！", class: "btn btn-info mt-5"

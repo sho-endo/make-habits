@@ -9,6 +9,8 @@
         %ul.navbar-nav.ml-auto
           - if logged_in?
             %li.nav-item
+              = link_to "自分ルールを作成する", habits_select_path, class: "nav-link"
+            %li.nav-item
               = link_to "マイページ", current_user, class: "nav-link"
             %li.nav-item
               = link_to "ログアウト", logout_path, method: "delete", class: "nav-link"
