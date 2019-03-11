@@ -245,6 +245,24 @@ ul {
   }
 }
 
+// makes new
+.makes-new-wrapper {
+  .jumbotron {
+    background-color: #f8f8f8;
+    padding: 4rem 2rem 3rem;
+    position: relative;
+  }
+  .back-icon {
+    color: #000;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+  }
+  .btn {
+    width: 25%;
+  }
+}
+
 // footer
 footer {
   height: 10vh;
@@ -362,6 +380,11 @@ footer {
       margin: 2rem 0!important;
     }
   }
+  .makes-new-wrapper {
+    .lead {
+      font-size: 1rem;
+    }
+  }
 }
 
 // 極小デバイス用（スマホ縦向き）
@@ -369,6 +392,11 @@ footer {
   .habits-select-wrapper {
     .jumbotron {
       padding: 4rem 1rem;
+    }
+  }
+  .makes-new-wrapper {
+    .btn {
+      width: 100%;
     }
   }
 }

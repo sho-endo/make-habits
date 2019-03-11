@@ -1,12 +1,25 @@
-.container
-  %p
-    まずは１回のノルマを決めましょう
-  %p
-    最初はバカバカしいほど簡単なことから始めることがコツです
+.container.makes-new-wrapper
+  .jumbotron.mt-5.text-center
+    #norm-description
+      = link_to "#", onclick: "history.back()", class: "back-icon" do
+        = icon("fa", "arrow-left")
+      %p.lead
+        まずは１回の行動のノルマを決めます。
+        %br
+        最初はバカバカしいほど簡単なことから始めることがコツです。
+        %br
+        「やらないよりはやったほうがいい程度のこと」をノルマにしてみましょう。
+      
+      = link_to "次へ", "#", id: "test", class: "btn btn-info mt-5"
 
-  = form_for(:make, url: makes_new_3_path, method: :get) do |f|
-    = f.hidden_field :title, value: @title
-    = f.text_area :norm, required: true, maxlength: 150, class: "form-control", placeholder: "１回腕立て伏せをする"
+    #norm-input.d-none
+      = link_to "#", class: "back-icon" do
+        = icon("fa", "arrow-left")
+      %p.lead
+        １回のノルマを入力してください
 
-    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
-    = f.submit "次へ", class: "btn btn-info"
+      = form_for(:make, url: makes_new_3_path, method: :get) do |f|
+        = f.hidden_field :title, value: @title
+        = f.text_area :norm, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex) １回腕立て伏せをする"
+
+        = f.submit "次へ", class: "btn btn-info mt-5"
