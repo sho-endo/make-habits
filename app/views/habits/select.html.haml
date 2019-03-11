@@ -1,5 +1,7 @@
-.container
-  %h1 習慣作成（仮）
-
-  = link_to "作りたい習慣がある", makes_new_1_path, class: "btn btn-info"
-  = link_to "やめたい習慣がある", quits_new_1_path, class: "btn btn-warning"
+.container.habits-select-wrapper
+  .jumbotron.mt-5.text-center
+    %p.lead
+      下記のどちらかを選んでください
+    .mt-5
+      = link_to "身につけたい習慣がある", makes_new_1_path, class: "btn btn-info col-10 col-offset-1 col-md-4 mr-3"
+      = link_to "やめたい習慣がある", quits_new_1_path, class: "btn btn-warning col-10 col-offset-1 col-md-4 ml-3"

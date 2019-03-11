@@ -33,6 +33,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  font-family: "Helvetica", "M PLUS 1p", "serif";
 }
 body {
   min-height: 100%;
@@ -152,7 +153,6 @@ ul {
   }
 }
 
-
 // user edit
 .user-edit-wrapper {
   .nav-tabs.nav-justified {
@@ -213,6 +213,69 @@ ul {
   }
 }
 
+// habit select
+.habits-select-wrapper {
+  .jumbotron {
+    background-color: #f8f8f8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+  }
+  .lead {
+    font-size: 1.5rem;
+    line-height: 3rem;
+    letter-spacing: .15rem;
+  }
+  .btn-info {
+    border-bottom: solid 4px #0c525d;
+    &:hover {
+      background-color: #17a2b8;
+    }
+    &:active {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      border-bottom: none;
+    }
+  }
+  .btn-warning {
+    border-bottom: solid 4px #a07800;
+    &:hover {
+      background-color: #ffc107;
+    }
+    &:active {
+      -webkit-transform: translateY(4px);
+      transform: translateY(4px);
+      border-bottom: none;
+    }
+  }
+}
+
+// makes new
+.makes-new-wrapper {
+  .jumbotron {
+    background-color: #f8f8f8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    padding: 4rem 2rem 3rem;
+    position: relative;
+  }
+  .lead {
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    letter-spacing: .15rem;
+  }
+  .form-control {
+    width: 75%;
+    margin: auto;
+  }
+  .back-icon {
+    color: #000;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+  }
+  .btn {
+    width: 25%;
+  }
+}
+
 // footer
 footer {
   height: 10vh;
@@ -222,7 +285,8 @@ footer {
 }
 
 // media query
-@media (max-width: 768px) {
+// 中デバイス用（タブレット）
+@media (max-width: 991.98px) {
   .img-caption h1 {
     font-size: 350%;
   }
@@ -241,7 +305,9 @@ footer {
     margin-top: 3rem !important;
   }
 }
-@media (max-width: 576px) {
+
+// 小デバイス用（スマホ）
+@media (max-width: 767.98px) {
   .img-caption h1 {
     font-size: 250%;
   }
@@ -314,6 +380,36 @@ footer {
     }
     th {
       font-size: .68rem;
+    }
+  }
+  .habits-select-wrapper {
+    .lead {
+      font-size: 1rem;
+    }
+    .btn-info {
+      margin: 0!important;
+    }
+    .btn-warning {
+      margin: 2rem 0!important;
+    }
+  }
+  .makes-new-wrapper {
+    .lead {
+      font-size: 1rem;
+    }
+  }
+}
+
+// 極小デバイス用（スマホ縦向き）
+@media (max-width: 575.98px) {
+  .habits-select-wrapper {
+    .jumbotron {
+      padding: 4rem 1rem;
+    }
+  }
+  .makes-new-wrapper {
+    .form-control, .btn{
+      width: 100%;
     }
   }
 }
