@@ -23,6 +23,10 @@ Rails.application.routes.draw do
   get "/makes/new/3", to: "makes#new3"
   get "/makes/new/4", to: "makes#new4"
   get "/makes/new/5", to: "makes#new5"
+  get "/makes/new/6", to: "makes#new6"
+  get "/makes/new/7", to: "makes#new7"
+  get "/makes/new/8", to: "makes#new8"
+  get "/makes/new/9", to: "makes#new9"
   resources :makes, only: [:create]
 
   get "/quits/new/1", to: "quits#new1"

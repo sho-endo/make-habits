@@ -1,13 +1,15 @@
-.container
-  %p
-    挫折しそうな状況になった時の対策を考えましょう
-  %p
-    どのような行動や考え方をしますか？
+.container.makes-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
 
-  = form_for(:make, url: makes_path) do |f|
-    = f.hidden_field :title, value: @title
-    = f.hidden_field :rule1, value: @rule1
-    = f.text_area :rule2, required: true, maxlength: 255, class: "form-control", value: "#{@situation}になったら〜をする"
+    %p.lead
+      下のフォームを編集して１つ目の自分ルールを作成してください。
+      %br
+      ex) 夕飯を食べ終わったら１回スクワットをする。
 
-    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
-    = f.submit "次へ", class: "btn btn-info"
+    = form_for(:make, url: makes_new_6_path, method: :get) do |f|
+      = f.hidden_field :title, value: @title
+      = f.text_area :rule1, required: true, maxlength: 255, class: "form-control mt-5", value: "#{@norm}"
+
+      = f.submit "次へ", class: "btn btn-info mt-5"

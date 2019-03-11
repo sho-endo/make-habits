@@ -1,8 +1,8 @@
 class MakesController < ApplicationController
   before_action :check_login
   before_action :forbid_direct_access, except: [:new1]
-  before_action :set_title, only: [:new2, :new3, :new4, :new5]
-  before_action :set_rule1, only: [:new4, :new5]
+  before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7, :new8, :new9]
+  before_action :set_rule1, only: [:new6, :new7, :new8, :new9]
 
   def new1
   end
@@ -11,13 +11,27 @@ class MakesController < ApplicationController
   end
 
   def new3
-    @norm = params[:make][:norm]
   end
 
   def new4
+    @norm = params[:make][:norm]
   end
 
   def new5
+    @norm = params[:make][:norm]
+  end
+
+  def new6
+  end
+
+  def new7
+  end
+
+  def new8
+    @situation = params[:make][:situation]
+  end
+
+  def new9
     @situation = params[:make][:situation]
   end
 

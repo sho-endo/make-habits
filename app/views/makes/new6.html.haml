@@ -1,0 +1,13 @@
+.container.makes-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
+    %p.lead
+      ２つ目の自分ルールを作成していきます。
+      %br
+      まず、挫折しそうになる状況や習慣が続かなくなる原因を想像してみましょう。
+
+    = form_for(:make, url: makes_new_7_path, method: :get) do |f|
+      = f.hidden_field :title, value: @title
+      = f.hidden_field :rule1, value: @rule1
+      = f.submit "次へ", class: "btn btn-info"
