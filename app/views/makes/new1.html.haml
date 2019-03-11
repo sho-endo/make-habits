@@ -3,9 +3,11 @@
     = link_to "#", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
     %p.lead
-      作りたい習慣はなんですか？
+      質問に答えながら２つの自分ルールを作成していきます。
+      %br
+      身につけたい習慣はなんですか？
 
     = form_for(:make, url: makes_new_2_path, method: :get) do |f|
-      = f.text_field :title, required: true, maxlength: 100, class: "form-control mt-5", placeholder: "ex) 運動"
+      = f.text_field :title, required: true, maxlength: 100, class: "form-control mt-5", placeholder: "ex) 筋トレ"
 
       = f.submit "次へ", class: "btn btn-info mt-5"

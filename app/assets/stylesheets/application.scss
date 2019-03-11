@@ -33,6 +33,7 @@
 html, body {
   height: 100%;
   width: 100%;
+  font-family: "Helvetica", "M PLUS 1p", "serif";
 }
 body {
   min-height: 100%;
@@ -152,7 +153,6 @@ ul {
   }
 }
 
-
 // user edit
 .user-edit-wrapper {
   .nav-tabs.nav-justified {
@@ -217,9 +217,12 @@ ul {
 .habits-select-wrapper {
   .jumbotron {
     background-color: #f8f8f8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
   }
   .lead {
     font-size: 1.5rem;
+    line-height: 3rem;
+    letter-spacing: .15rem;
   }
   .btn-info {
     border-bottom: solid 4px #0c525d;
@@ -249,8 +252,18 @@ ul {
 .makes-new-wrapper {
   .jumbotron {
     background-color: #f8f8f8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
     padding: 4rem 2rem 3rem;
     position: relative;
+  }
+  .lead {
+    font-size: 1.5rem;
+    line-height: 3.5rem;
+    letter-spacing: .15rem;
+  }
+  .form-control {
+    width: 75%;
+    margin: auto;
   }
   .back-icon {
     color: #000;
@@ -395,7 +408,7 @@ footer {
     }
   }
   .makes-new-wrapper {
-    .btn {
+    .form-control, .btn{
       width: 100%;
     }
   }
