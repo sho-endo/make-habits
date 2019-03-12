@@ -1,12 +1,10 @@
-.container
-  %p
-    その習慣をついやってしまうのはどのような状況ですか？
-  %p
-    すぐに思いつかなかったら数日生活してみて、ついやってしまう状況を記録してみましょう
+.container.makes-new-wrapper
+  .jumbotron.mt-5.text-center
+    %p.lead
+      その習慣をついやってしまうのはどのような状況ですか？
+      %br
+      すぐに思いつかなかったら数日生活してみて、ついやってしまう状況を記録してみましょう
 
-  = form_for(:quit, url: quits_new_3_path, method: :get) do |f|
-    = f.hidden_field :title, value: @title
-    = f.text_area :situation, required: true, maxlength: 150, class: "form-control", placeholder: "自分の部屋で暇になったとき"
-
-    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
-    = f.submit "次へ", class: "btn btn-info"
+    = form_for(:quit, url: quits_new_3_path, method: :get) do |f|
+      = f.hidden_field :title, value: @title
+      = f.submit "次へ", class: "btn btn-info mt-5"

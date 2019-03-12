@@ -1,8 +1,13 @@
-.container
-  %p
-    やめたい習慣はなんですか？
+.container.quits-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
+    %p.lead
+      質問に答えながら２つの自分ルールを作成していきます。
+      %br
+      やめたい習慣はなんですか？
 
-  = form_for(:quit, url: quits_new_2_path, method: :get) do |f|
-    = f.text_area :title, required: true, maxlength: 255, class: "form-control", placeholder: "ついyoutubeを見てしまう"
+    = form_for(:quit, url: quits_new_2_path, method: :get) do |f|
+      = f.text_field :title, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "ex）ついYouTubeを見てしまう"
 
-    = f.submit "次へ", class: "btn btn-info"
+      = f.submit "次へ", class: "btn btn-info mt-5"

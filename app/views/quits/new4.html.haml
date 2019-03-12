@@ -1,15 +1,15 @@
-.container
-  %p
-    やめたい習慣を簡単にはできないようなルールを決めましょう
-  %p
-    コツは今より少なくとも２０秒以上余計に時間がかかるようにすることです。
-  %p
-    例）ついyoutubeをみてしまう→スマホからアプリを消して、見るときはパソコンで見る
+.container.makes-new-wrapper
+  .jumbotron.mt-5.text-center
+    = link_to "#", onclick: "history.back()", class: "back-icon" do
+      = icon("fa", "arrow-left")
+    %p.lead
+      やめたい習慣を代わりの行動におきかえて１つ目の自分ルールを作ります。
+      %br
+      「やってしまう状況になったら代わりの行動をする」という形で作ってみましょう。
+      %br
+      代わりの行動はやめたい習慣と同時にはできないものにしてください。
 
-  = form_for(:quit, url: quits_path) do |f|
-    = f.hidden_field :title, value: @title
-    = f.hidden_field :rule1, value: @rule1
-    = f.text_area :rule2, required: true, maxlength: 255, class: "form-control", placeholder: ""
-
-    = link_to "戻る", "#", onclick: "history.back()", class: "btn btn-warning"
-    = f.submit "次へ", class: "btn btn-info"
+    = form_for(:quit, url: quits_new_5_path, method: :get) do |f|
+      = f.hidden_field :title, value: @title
+      = f.hidden_field :situation, value: @situation
+      = f.submit "次へ", class: "btn btn-info mt-5"

@@ -3,9 +3,11 @@
     = link_to "#", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
     %p.lead
-      挫折しそうになった時の対策を考えましょう。
+      次に挫折しそうになった時の対策を考えましょう。
       %br
       どのような行動や考え方をすればその状況を克服できますか？
+      %br
+      「挫折しそうな状況になったら、対策を行う」という形で２つ目の自分ルールを作成してください。
     
     = form_for(:make, url: makes_new_9_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
