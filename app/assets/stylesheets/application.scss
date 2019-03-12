@@ -259,7 +259,7 @@ ul {
   .lead {
     font-size: 1.5rem;
     line-height: 3.5rem;
-    letter-spacing: .15rem;
+    letter-spacing: .1rem;
   }
   .form-control {
     width: 75%;
@@ -273,6 +273,9 @@ ul {
   }
   .btn {
     width: 25%;
+  }
+  ::placeholder {
+    color: rgba(134, 164, 164, 0.7);
   }
 }
 
@@ -413,6 +416,7 @@ footer {
     }
     .lead {
       text-align: justify!important;
+      letter-spacing: .05rem;
     }
   }
 }
