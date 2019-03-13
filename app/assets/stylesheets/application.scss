@@ -281,10 +281,12 @@ ul {
 
 // footer
 footer {
-  height: 10vh;
+  min-height: 10vh;
   background-color: #3f3f3f;
   color: #d5d5d5;
-  padding: 2rem 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 // media query
