@@ -6,7 +6,7 @@
       %span Twitterでログイン
     .divide-text-login または
     = form_for(:session, url: login_path) do |f|
-      = f.email_field :email, required: true, class: "form-control placeholder mt-4 mb-4", placeholder: "メールアドレス"
+      = f.email_field :email, required: true, class: "form-control placeholder mt-4 mb-4", placeholder: "メールアドレス", value: "#{@email}"
 
       = f.password_field :password, required: true, class: "form-control placeholder mb-3", placeholder: "パスワード"
 
