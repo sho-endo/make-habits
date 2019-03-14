@@ -7,7 +7,8 @@ class PasswordResetsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:password_reset][:email].downcase)
+    @email = params[:password_reset][:email]
+    @user = User.find_by(email: @email.downcase)
     unless @user
       flash.now[:danger] = "メールアドレスが間違っています"
       render :new and return
