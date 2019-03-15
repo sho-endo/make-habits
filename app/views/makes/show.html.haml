@@ -1,0 +1,18 @@
+.container.makes-show-wrapper
+  .jumbotron.mt-5.mx-auto.p-0.text-center
+    %section.title.border-bottom.px-3
+      %p.section-title 身につけたい習慣
+      %p.content
+        = @make.title
+    %section.rule1.border-bottom.px-3
+      %p.section-title ルール①
+      %p.content
+        = @make.rule1
+    %section.rule2.border-bottom.px-3
+      %p.section-title ルール②
+      %p.content
+        = @make.rule2
+    %section.date.px-3
+      %p.section-title 作成日
+      %p.content
+        = @make.created_at.strftime('%Y/%m/%d')

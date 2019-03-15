@@ -8,6 +8,6 @@
     = form_for(:make, url: makes_new_8_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
-      = f.text_area :situation, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex）めんどくさくなってしまう"
+      = f.text_field :situation, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex）めんどくさくなってしまう"
 
       = f.submit "次へ", class: "btn btn-info mt-5"

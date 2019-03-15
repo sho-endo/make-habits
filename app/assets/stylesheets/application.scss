@@ -279,6 +279,44 @@ ul {
   }
 }
 
+// make show, quit show
+.makes-show-wrapper, .quits-show-wrapper {
+  p {
+    margin: 0;
+  }
+
+  .jumbotron {
+    max-width: 600px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    .title {
+      // background-color: #ccffcc;
+      border-radius: 3px 3px 0 0;
+    }
+    .section-title {
+      padding-top: 1rem;
+      opacity: .7;
+    }
+    .content {
+      padding: 1rem 0 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+}
+
+.makes-show-wrapper {
+  .title {
+    background-color: #ccffcc;
+  }
+}
+
+.quits-show-wrapper {
+  .title {
+    background-color: #ffffd7;
+  }
+}
+
 // footer
 footer {
   height: 10vh;
@@ -288,7 +326,7 @@ footer {
 }
 
 // media query
-// 中デバイス用（タブレット）
+// 中デバイス用（小さめパソコン、大きめタブレット）
 @media (max-width: 991.98px) {
   .img-caption h1 {
     font-size: 350%;
@@ -309,7 +347,7 @@ footer {
   }
 }
 
-// 小デバイス用（スマホ）
+// 小デバイス用（小さめタブレット）
 @media (max-width: 767.98px) {
   .img-caption h1 {
     font-size: 250%;
@@ -403,7 +441,7 @@ footer {
   }
 }
 
-// 極小デバイス用（スマホ縦向き）
+// 極小デバイス用（スマホ）
 @media (max-width: 575.98px) {
   .habits-select-wrapper {
     .jumbotron {
@@ -417,6 +455,19 @@ footer {
     .lead {
       text-align: justify!important;
       letter-spacing: .05rem;
+    }
+  }
+
+  .makes-show-wrapper, .quits-show-wrapper {
+    .jumbotron {
+      text-align: justify!important;
+
+      .section-title {
+        font-size: .8rem;
+      }
+      .content {
+        font-size: 1.2rem;
+      }
     }
   }
 }
