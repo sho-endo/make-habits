@@ -1,5 +1,5 @@
-.container.quits-show-wrapper
-  .jumbotron.mt-5.mx-auto.p-0.text-center
+.container.quits-show-wrapper.text-center
+  .jumbotron.mt-5.mx-auto.p-0
     %section.title.border-bottom.px-3
       %p.section-title やめたい習慣
       %p.content
@@ -16,3 +16,5 @@
       %p.section-title 作成日
       %p.content
         = @quit.created_at.strftime('%Y/%m/%d')
+
+  = link_to "削除", habit_path(@quit), method: :delete, class: "btn btn-secondary d-inline-block", data: { confirm: "本当に削除しますか？" }
