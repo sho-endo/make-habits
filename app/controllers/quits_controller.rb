@@ -39,6 +39,12 @@ class QuitsController < HabitsController
     end
   end
 
+  def update
+    quit = current_user.quits.find(params[:id])
+    quit.update!(quit_params)
+    head :no_content
+  end
+
   def show
     @quit = current_user.quits.find(params[:id])
   end
@@ -46,7 +52,7 @@ class QuitsController < HabitsController
   private
 
     def quit_params
-      params.require(:quit).permit(:title, :rule1, :rule2)
+      params.require(:quit).permit(:title, :rule1, :rule2, :progress)
     end
 
     def forbid_direct_access
