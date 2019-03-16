@@ -14,7 +14,7 @@ class HabitsController < ApplicationController
   private
 
     def check_correct_user
-      unless current_user.habits.find_by(id: params[:id])
+      unless current_user.habits.find_by_hashid(params[:id]) # rubocop:disable Rails/DynamicFindBy
         redirect_to current_user
       end
     end
