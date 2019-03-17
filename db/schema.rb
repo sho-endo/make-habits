@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_171959) do
+ActiveRecord::Schema.define(version: 2019_03_16_083639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_171959) do
     t.datetime "updated_at", null: false
     t.string "rule1", null: false
     t.string "rule2", null: false
+    t.integer "progress", default: 0, null: false
     t.index ["user_id"], name: "index_habits_on_user_id"
   end
 

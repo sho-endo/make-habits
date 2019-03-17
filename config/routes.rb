@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resources :habits, only: [:destroy]
   get "/habits/select", to: "habits#select"
 
-  resources :makes, only: [:create, :show]
+  resources :makes, only: [:create, :show, :update]
   get "/makes/new/1", to: "makes#new1"
   get "/makes/new/2", to: "makes#new2"
   get "/makes/new/3", to: "makes#new3"
@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   get "/makes/new/8", to: "makes#new8"
   get "/makes/new/9", to: "makes#new9"
 
-  resources :quits, only: [:create, :show]
+  resources :quits, only: [:create, :show, :update]
   get "/quits/new/1", to: "quits#new1"
   get "/quits/new/2", to: "quits#new2"
   get "/quits/new/3", to: "quits#new3"

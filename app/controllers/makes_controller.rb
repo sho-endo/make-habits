@@ -47,6 +47,12 @@ class MakesController < HabitsController
     end
   end
 
+  def update
+    make = current_user.makes.find(params[:id])
+    make.update!(make_params)
+    head :no_content
+  end
+
   def show
     @make = current_user.makes.find(params[:id])
   end
@@ -54,7 +60,7 @@ class MakesController < HabitsController
   private
 
     def make_params
-      params.require(:make).permit(:title, :rule1, :rule2)
+      params.require(:make).permit(:title, :rule1, :rule2, :progress)
     end
 
     def forbid_direct_access

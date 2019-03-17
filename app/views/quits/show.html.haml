@@ -12,9 +12,16 @@
       %p.section-title ルール②
       %p.content
         = @quit.rule2
-    %section.date.px-3
+    %section.date.border-bottom.px-3
       %p.section-title 作成日
       %p.content
         = @quit.created_at.strftime('%Y/%m/%d')
+    %section.px-3
+      %p.section-title 進捗
+      .progressRange
+        = form_for(@quit, remote: true) do |f|
+          = f.range_field :progress, min: 0, max: 100, step: 1, value: @quit.progress, onchange: 'Rails.fire(this.form, "submit")'
+          %span
+            = "#{@quit.progress}%"
 
-  = link_to "削除", habit_path(@quit), method: :delete, class: "btn btn-secondary d-inline-block", data: { confirm: "本当に削除しますか？" }
+  = link_to "削除する", habit_path(@quit), method: :delete, class: "text-center delete-rule", data: { confirm: "このルールを削除しますか？" }
