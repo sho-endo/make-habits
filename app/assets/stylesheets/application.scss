@@ -277,6 +277,14 @@ ul {
   ::placeholder {
     color: rgba(134, 164, 164, 0.7);
   }
+  .hint-text {
+    font-size: 1.2rem;
+    color: #17a2b8;
+    &:hover {
+      color: #0f6674;
+      text-decoration: none;
+    }
+  }
 }
 
 // make show, quit show

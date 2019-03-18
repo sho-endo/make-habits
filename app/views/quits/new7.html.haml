@@ -1,13 +1,28 @@
-.container.quits-new-wrapper
-  .jumbotron.mt-5.text-center
+.container.quits-new-wrapper.text-center
+  .jumbotron.mt-5
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
     %p.lead
       ２つ目の自分ルールを作成してください。
+      %br
+      ex）スマホからアプリを消してYouTubeはパソコンで見るようにする
 
     = form_for(:quit, url: quits_path) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
-      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "ex）スマホからアプリを消して、YouTubeはパソコンで見るようにする。"
+      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "２つ目の自分ルールを入力してください"
 
       = f.submit "完成！", class: "btn btn-info mt-5"
+
+  %a.hint-text.d-inline-block.mt-3.mb-5{"data-toggle" => "modal", "href" => "#quitHintModal2"}
+    ルール作成のヒント
+
+  #quitHintModal2.modal.fade{"tab-index" => "-1", "role" => "dialog", "aria-labelledby" => "quitHintModal2Label", "aria-hidden" => "true"}
+    .modal-dialog.modal-dialog-centered{"role" => "document"}
+      .modal-content
+        .modal-header
+          %h5.m-0.modal-titel#quitHintModal2Title ヒント
+          %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "閉じる"}
+            %span{"aria-hidden" => "true"} &times;
+        .modal-body
+          %p fjsdlかjfsだjlkfjlさdjkfjsあklj
