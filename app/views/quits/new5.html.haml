@@ -1,5 +1,5 @@
-.container.quits-new-wrapper
-  .jumbotron.mt-5.text-center
+.container.quits-new-wrapper.text-center
+  .jumbotron.mt-5
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
     %p.lead
@@ -12,3 +12,25 @@
       = f.text_area :rule1, required: true, maxlength: 255, class: "form-control mt-5", value: "#{@situation}"
 
       = f.submit "次へ", class: "btn btn-info mt-5"
+
+  %a.hint-text.d-inline-block.mt-3.mb-5{"data-toggle" => "modal", "href" => "#quitHintModal1"}
+    ルール作成のヒント
+
+  #quitHintModal1.modal.fade{"tab-index" => "-1", "role" => "dialog", "aria-labelledby" => "quitHintModal1Label", "aria-hidden" => "true"}
+    .modal-dialog.modal-dialog-centered{"role" => "document"}
+      .modal-content.text-justify
+        .modal-header
+          %h5.m-0.modal-titel#quitHintModal1Title ヒント
+          %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "閉じる"}
+            %span{"aria-hidden" => "true"} &times;
+        .modal-body
+          %p
+            &emsp;１度はじめてしまった事を自分の意志の力でやめるのは非常に難しいです。なので、すでにある習慣をやめるためには「その行動をやりはじめないようにすること」が大切です。
+          %p
+            &emsp;そのために有効なのが「習慣を別の行動におきかえる」ことです。「普段だったらやめたい習慣をやってしまう状況になったら、代わりの行動をやる」というルールを作ることで意志の力に頼らずにやめることを目指します。
+          %p
+            ・タバコを吸ってしまう→ガムを噛む
+            %br
+            ・ジュースを飲んでしまう→お茶を飲む
+            %br
+            のように同時にはできない行動におきかえてみましょう。

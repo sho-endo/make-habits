@@ -277,6 +277,20 @@ ul {
   ::placeholder {
     color: rgba(134, 164, 164, 0.7);
   }
+  .hint-text {
+    font-size: 1.2rem;
+    color: #17a2b8;
+    &:hover {
+      color: #0f6674;
+      text-decoration: none;
+    }
+  }
+  .modal-content {
+    p {
+      line-height: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 
 // make show, quit show
@@ -476,6 +490,12 @@ footer {
     .lead {
       text-align: justify!important;
       letter-spacing: .05rem;
+    }
+    .modal-content {
+      p {
+        font-size: .85rem;
+        letter-spacing: .05rem;
+      }
     }
   }
 
