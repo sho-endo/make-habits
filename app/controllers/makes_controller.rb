@@ -1,8 +1,9 @@
-class MakesController < ApplicationController
+class MakesController < HabitsController
   before_action :check_login
-  before_action :forbid_direct_access, except: [:new1]
+  before_action :forbid_direct_access, except: [:new1, :show]
   before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7, :new8, :new9]
   before_action :set_rule1, only: [:new6, :new7, :new8, :new9]
+  before_action :check_correct_user, only: [:show]
 
   def new1
   end
@@ -39,17 +40,27 @@ class MakesController < ApplicationController
     make = current_user.makes.build(make_params)
     if make.save
       flash[:success] = "自分ルールを作成しました！"
-      redirect_to current_user
+      redirect_to make
     else
       flash[:warning] = "データの保存に失敗しました。お手数ですがもう一度やり直してください。"
       redirect_to makes_new_1_url
     end
   end
 
+  def update
+    make = current_user.makes.find(params[:id])
+    make.update!(make_params)
+    head :no_content
+  end
+
+  def show
+    @make = current_user.makes.find(params[:id])
+  end
+
   private
 
     def make_params
-      params.require(:make).permit(:title, :rule1, :rule2)
+      params.require(:make).permit(:title, :rule1, :rule2, :progress)
     end
 
     def forbid_direct_access

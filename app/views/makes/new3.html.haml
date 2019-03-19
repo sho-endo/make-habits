@@ -1,5 +1,5 @@
-.container.makes-new-wrapper
-  .jumbotron.mt-5.text-center
+.container.makes-new-wrapper.text-center
+  .jumbotron.mt-5
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
 
@@ -11,3 +11,21 @@
       = f.text_field :norm, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex) １回スクワットをする"
 
       = f.submit "次へ", class: "btn btn-info mt-5"
+
+  %a.hint-text.d-inline-block.mt-3.mb-5{"data-toggle" => "modal", "href" => "#normModal"}
+    ノルマ作成のヒント
+
+  #normModal.modal.fade{"tab-index" => "-1", "role" => "dialog", "aria-labelledby" => "normModalLabel", "aria-hidden" => "true"}
+    .modal-dialog.modal-dialog-centered{"role" => "document"}
+      .modal-content
+        .modal-header
+          %h5.m-0.modal-titel#normModalTitle ヒント
+          %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "閉じる"}
+            %span{"aria-hidden" => "true"} &times;
+        .modal-body.text-justify
+          %p
+            &emsp;習慣づくりにおける最大のハードルはその行動をはじめることです。そのハードルを超えるために、まずは抵抗感なく始められることをノルマに設定しましょう。
+          %p
+            &emsp;「ジムにいって１時間筋トレする」というノルマでは継続するのに強い意志が必要ですが、ノルマが「ジムにいく」だけならより簡単に続けることができます。
+          %p
+            &emsp;最初はとにかく続けることが大切です。意志の力に頼らなくても済むような簡単なノルマを決めることが習慣づくりの第１歩です。

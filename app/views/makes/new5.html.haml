@@ -1,15 +1,34 @@
-.container.makes-new-wrapper
-  .jumbotron.mt-5.text-center
+.container.makes-new-wrapper.text-center
+  .jumbotron.mt-5
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
 
     %p.lead
       下のフォームを編集して１つ目の自分ルールを作成してください。
       %br
-      ex) 夕飯を食べ終わったら１回スクワットをする。
+      ex) 夕飯を食べ終わったら１回スクワットをする
 
     = form_for(:make, url: makes_new_6_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.text_area :rule1, required: true, maxlength: 255, class: "form-control mt-5", value: "#{@norm}"
 
       = f.submit "次へ", class: "btn btn-info mt-5"
+  %a.hint-text.d-inline-block.mt-3.mb-5{"data-toggle" => "modal", "href" => "#makeHintModal1"}
+    ルール作成のヒント
+
+  #makeHintModal1.modal.fade{"tab-index" => "-1", "role" => "dialog", "aria-labelledby" => "makeHintModal1Label", "aria-hidden" => "true"}
+    .modal-dialog.modal-dialog-centered{"role" => "document"}
+      .modal-content
+        .modal-header
+          %h5.m-0.modal-titel#makeHintModal1Title ヒント
+          %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "閉じる"}
+            %span{"aria-hidden" => "true"} &times;
+        .modal-body.text-justify
+          %p
+            &emsp;自分の意志の力で習慣づくりをしようとすると挫折する確率が高くなってしまいます。
+          %p
+            &emsp;継続するコツは行動を「ルール化」してしまい、自分の意志とは関係なく実行することです。その方法の１つがすでにある習慣と新しくはじめたい行動をセットにするというものです。
+          %p
+            &emsp;「食事をする」「電車に乗る」「お風呂に入る」などの普段当たり前におこなっている行動にノルマを結びつけることで、気軽に有効なルールを決めることができます。
+          %p
+            &emsp;ノルマの頻度を調整したい場合は「月・水・金曜日は仕事が終わったらジムにいく」などの条件にしても大丈夫です。この時も必ずすでにある習慣とセットにしてください。

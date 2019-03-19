@@ -19,3 +19,13 @@
 
 - if @user == current_user && @user.admin?
   = link_to "ユーザー管理画面", admin_users_path, class: "btn btn-success"
+
+%br
+make
+- @user.makes.each do |make|
+  = link_to make.id, make
+
+%br
+quit
+- @user.quits.each do |quit|
+  = link_to quit.id, quit

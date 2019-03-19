@@ -52,6 +52,8 @@ gem "omniauth-twitter"
 # pagination
 gem "kaminari"
 
+gem "hashid-rails", "~> 1.0"
+
 group :development, :test do
   gem "onkcop", require: false
   gem "pry-byebug"

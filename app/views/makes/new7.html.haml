@@ -3,11 +3,13 @@
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
     %p.lead
-      挫折しそうになる状況を入力してください。
+      まず、挫折しそうになる状況や習慣が続かなくなる場面を想像してください。
+      %br
+      ex) 「疲れて眠い」「めんどくさくなってしまう」など
 
     = form_for(:make, url: makes_new_8_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
-      = f.text_area :situation, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex）めんどくさくなってしまう"
+      = f.text_field :situation, required: true, maxlength: 150, class: "form-control mt-5", placeholder: "ex) 挫折しそうになる状況を入力してください"
 
       = f.submit "次へ", class: "btn btn-info mt-5"

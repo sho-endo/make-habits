@@ -277,6 +277,79 @@ ul {
   ::placeholder {
     color: rgba(134, 164, 164, 0.7);
   }
+  .hint-text {
+    font-size: 1.2rem;
+    color: #17a2b8;
+    &:hover {
+      color: #0f6674;
+      text-decoration: none;
+    }
+  }
+  .modal-content {
+    p {
+      line-height: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+
+// make show, quit show
+.makes-show-wrapper, .quits-show-wrapper {
+  p {
+    margin: 0;
+  }
+
+  .jumbotron {
+    max-width: 600px;
+    background-color: #f7f7f7;
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+    .title {
+      border-radius: 3px 3px 0 0;
+    }
+    .section-title {
+      padding-top: 1rem;
+      opacity: .7;
+    }
+    .content {
+      padding: 1rem 0 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+    .progressRange {
+      padding: 1rem 0 1.5rem;
+      input[type="range"] {
+        width: 65%;
+        cursor: pointer;
+      }
+      span {
+        position: absolute;
+        margin-left: 8px;
+        -webkit-transform: translateY(-2px);
+        transform: translateY(-2px);
+      }
+    }
+  }
+  .delete-rule {
+    color: #999999;
+    display: inline-block;
+    margin: 1rem 0 3rem;
+    &:hover {
+      text-decoration: none;
+      color: #000000;
+    }
+  }
+}
+
+.makes-show-wrapper {
+  .title {
+    background-color: #ccffcc;
+  }
+}
+
+.quits-show-wrapper {
+  .title {
+    background-color: #ffffd7;
+  }
 }
 
 // footer
@@ -290,7 +363,7 @@ footer {
 }
 
 // media query
-// 中デバイス用（タブレット）
+// 中デバイス用（小さめパソコン、大きめタブレット）
 @media (max-width: 991.98px) {
   .img-caption h1 {
     font-size: 350%;
@@ -311,7 +384,7 @@ footer {
   }
 }
 
-// 小デバイス用（スマホ）
+// 小デバイス用（小さめタブレット）
 @media (max-width: 767.98px) {
   .img-caption h1 {
     font-size: 250%;
@@ -405,7 +478,7 @@ footer {
   }
 }
 
-// 極小デバイス用（スマホ縦向き）
+// 極小デバイス用（スマホ）
 @media (max-width: 575.98px) {
   .habits-select-wrapper {
     .jumbotron {
@@ -419,6 +492,30 @@ footer {
     .lead {
       text-align: justify!important;
       letter-spacing: .05rem;
+    }
+    .modal-content {
+      p {
+        font-size: .85rem;
+        letter-spacing: .05rem;
+      }
+    }
+  }
+
+  .makes-show-wrapper, .quits-show-wrapper {
+    .jumbotron {
+      text-align: justify!important;
+
+      .section-title {
+        font-size: .8rem;
+      }
+      .content {
+        font-size: 1.2rem;
+      }
+      .progressRange {
+        input[type="range"] {
+          width: 85%;
+        }
+      }
     }
   }
 }

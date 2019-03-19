@@ -5,7 +5,7 @@
   %br
   下記のリンクにアクセスしてアカウントを有効化してください。
   %br
-  （アカウントが有効化されていないとパスワードを変更することができません。）
+  （アカウントが有効化されていないと、パスワードを忘れたときに再設定することができません。）
 
 = link_to "アカウントを有効化する", edit_account_activation_url(@user.activation_token,
                                                                 email: @user.email)

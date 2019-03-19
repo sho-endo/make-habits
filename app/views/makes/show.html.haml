@@ -1,0 +1,27 @@
+.container.makes-show-wrapper.text-center
+  .jumbotron.mt-5.mx-auto.p-0
+    %section.title.border-bottom.px-3
+      %p.section-title 身につけたい習慣
+      %p.content
+        = @make.title
+    %section.rule1.border-bottom.px-3
+      %p.section-title ルール①
+      %p.content
+        = @make.rule1
+    %section.rule2.border-bottom.px-3
+      %p.section-title ルール②
+      %p.content
+        = @make.rule2
+    %section.date.border-bottom.px-3
+      %p.section-title 作成日
+      %p.content
+        = @make.created_at.strftime('%Y/%m/%d')
+    %section.px-3
+      %p.section-title 進捗
+      .progressRange
+        = form_for(@make, remote: true) do |f|
+          = f.range_field :progress, min: 0, max: 100, step: 1, value: @make.progress, onchange: 'Rails.fire(this.form, "submit")'
+          %span
+            = "#{@make.progress}%"
+
+  = link_to "削除する", habit_path(@make), method: :delete, class: "text-center delete-rule", data: { confirm: "このルールを削除しますか？" }
