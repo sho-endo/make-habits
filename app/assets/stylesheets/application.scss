@@ -350,14 +350,8 @@ ul {
       }
     }
   }
-  .delete-rule {
-    color: #999999;
-    display: inline-block;
-    margin: 1rem 0 3rem;
-    &:hover {
-      text-decoration: none;
-      color: #000000;
-    }
+  .btn {
+    font-size: .9rem;
   }
 }
 
@@ -544,6 +538,9 @@ footer {
           width: 85%;
         }
       }
+    }
+    .btn {
+      font-size: .8rem;
     }
   }
 }

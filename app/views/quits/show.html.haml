@@ -1,5 +1,5 @@
 .container.quits-show-wrapper.text-center
-  .jumbotron.mt-5.mx-auto.p-0
+  .jumbotron.mt-5.mx-auto.p-0#quit-rule
     %section.title.border-bottom.px-3
       %p.section-title やめたい習慣
       %p.content
@@ -16,12 +16,13 @@
       %p.section-title 作成日
       %p.content
         = @quit.created_at.strftime('%Y/%m/%d')
-    %section.px-3
+    %section.px-3.d-none#quit-progress
       %p.section-title 進捗
       .progressRange
         = form_for(@quit, remote: true) do |f|
           = f.range_field :progress, min: 0, max: 100, step: 1, value: @quit.progress, onchange: 'Rails.fire(this.form, "submit")'
           %span
             = "#{@quit.progress}%"
-
-  = link_to "削除する", habit_path(@quit), method: :delete, class: "text-center delete-rule", data: { confirm: "このルールを削除しますか？" }
+  .row
+    = link_to "ルール画像をダウンロードする", "#", download: "myrule_#{@quit.id}", id: "quit-download", class: "btn btn-success col-6 offset-3 col-md-4 offset-md-4 mt-4 mb-2"
+    = link_to "ルールを削除する", habit_path(@quit), method: :delete, class: "btn btn-secondary col-6 offset-3 col-md-4 offset-md-4 my-5", data: { confirm: "このルールを削除しますか？" }

@@ -16,4 +16,6 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
+//= require html2canvas/dist/html2canvas.js
+//= require html2canvas/dist/html2canvas.min.js
 //= require_tree .
