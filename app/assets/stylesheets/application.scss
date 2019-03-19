@@ -285,6 +285,12 @@ ul {
       text-decoration: none;
     }
   }
+  .modal-content {
+    p {
+      line-height: 1.6rem;
+      margin-bottom: 1.5rem;
+    }
+  }
 }
 
 // make show, quit show
@@ -484,6 +490,12 @@ footer {
     .lead {
       text-align: justify!important;
       letter-spacing: .05rem;
+    }
+    .modal-content {
+      p {
+        font-size: .85rem;
+        letter-spacing: .05rem;
+      }
     }
   }
 

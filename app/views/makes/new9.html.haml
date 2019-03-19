@@ -5,7 +5,7 @@
     %p.lead
       下のフォームを編集して２つ目の自分ルールを作成してください。
       %br
-      ex）めんどくさいと思ったら太ってる自分の写真を見返す
+      ex) めんどくさいと思ったら太ってる自分の写真を見返す
 
     = form_for(:make, url: makes_path) do |f|
       = f.hidden_field :title, value: @title
@@ -24,5 +24,8 @@
           %h5.m-0.modal-titel#makeHintModal2Title ヒント
           %button.close{"type" => "button", "data-dismiss" => "modal", "aria-label" => "閉じる"}
             %span{"aria-hidden" => "true"} &times;
-        .modal-body
-          %p fjsdlかjfsだjlkfjlさdjkfjsあklj
+        .modal-body.text-justify
+          %p
+            &emsp;「どうしても時間がない」「どうしても疲れて眠い」というような状況では、無理にノルマをやるよりも代わりにやる日を決める方が有効です。
+            %br
+            ex) 「疲れて眠い場合は、寝てしまって次の日の朝起きたらすぐにノルマをやる。」
