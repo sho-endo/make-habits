@@ -354,16 +354,70 @@ ul {
     font-size: .9rem;
   }
 }
-
 .makes-show-wrapper {
   .title {
     background-color: #ccffcc;
   }
 }
-
 .quits-show-wrapper {
   .title {
     background-color: #ffffd7;
+  }
+}
+
+// users show
+.user-show-wrapper {
+  h1 {
+    font-size: 2rem;
+    opacity: 0.7;
+  }
+  .jumbotron {
+    background-color: #f8f8f8;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
+    .nav-item {
+      width : 33.33333%; /* 未対応ブラウザ用フォールバック */
+      width : -webkit-calc(100% / 3);
+      width : calc(100% / 3);
+      a {
+        color: black;
+      }
+    }
+    .nav-link {
+      height: 100%;
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .rule-empty-text {
+      font-size: 1.5rem;
+      padding: 3rem;
+      text-align: center;
+      line-height: 4;
+      letter-spacing: .05rem;
+    }
+    .habit {
+      padding: 1.5rem .5rem;
+      position: relative;
+      &:hover {
+        background-color: #dedede;
+      }
+      a {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+      }
+      .title {
+        display: inline-block;
+        width: 80%;
+        font-size: 1.3rem;
+      }
+      .number {
+        display: inline-block;
+        width: 10%;
+        font-size: 1.2rem;
+      }
+    }
   }
 }
 
@@ -496,6 +550,24 @@ footer {
       font-size: 1rem;
     }
   }
+  .user-show-wrapper {
+    h1 {
+      font-size: 1.5rem;
+    }
+    .jumbotron {
+      .rule-empty-text {
+        font-size: 1.2rem;
+      }
+      .habit {
+        .title {
+          font-size: 1.1rem;
+        }
+        .number {
+          font-size: 1.1rem;
+        }
+      }
+    }
+  }
 }
 
 // 極小デバイス用（スマホ）
@@ -541,6 +613,33 @@ footer {
     }
     .btn {
       font-size: .8rem;
+    }
+  }
+  .user-show-wrapper {
+    h1 {
+      font-size: 1.2rem;
+    }
+    .jumbotron {
+      .nav-item {
+        a {
+          font-size: .8rem!important;
+        }
+      }
+      .nav-link {
+        padding: 1rem 0;
+      }
+      .rule-empty-text {
+        font-size: .9rem;
+        padding: 3rem 2rem;
+      }
+      .habit {
+        .title {
+          font-size: 1rem;
+        }
+        .number {
+          font-size: 1rem;
+        }
+      }
     }
   }
 }

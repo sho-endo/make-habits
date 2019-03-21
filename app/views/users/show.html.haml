@@ -1,31 +1,60 @@
-%h1.text-center
-  マイページ(仮)
-%p
-  = @user.name
-%p
-  = @user.email
-%p
-  = "activated: #{@user.activated}"
-%p
-  = "admin: #{@user.admin}"
-
-= link_to "自分ルールを作る", habits_select_path, class: "btn btn-primary"
-
-- if @user == current_user && !logged_in_by_twitter?
-  = link_to "編集", edit_user_path(@user), class: "btn btn-info"
-
-- if @user == current_user && logged_in_by_twitter?
-  = link_to "アカウントを削除する場合はこちらから", delete_page_path(@user)
-
-- if @user == current_user && @user.admin?
-  = link_to "ユーザー管理画面", admin_users_path, class: "btn btn-success"
-
-%br
-make
-- @user.makes.each do |make|
-  = link_to make.id, make
-
-%br
-quit
-- @user.quits.each do |quit|
-  = link_to quit.id, quit
+.container.user-show-wrapper
+  %h1.text-center.my-5
+    = "自分ルール一覧"
+  .jumbotron.mt-5.mx-auto.p-0
+    %ul.nav.nav-tabs
+      %li.nav-item
+        %a.nav-link.active{"href" => "#tab1", "data-toggle" => "tab"} すべて
+      %li.nav-item
+        %a.nav-link.border-left.border-right{"href" => "#tab2", "data-toggle" => "tab"} 身につけたい
+      %li.nav-item
+        %a.nav-link{"href" => "#tab3", "data-toggle" => "tab"} やめたい
+    .tab-content
+      #tab1.tab-pane.active
+        - if @user.habits.empty?
+          %p.rule-empty-text
+            まだ自分ルールがありません
+            %br
+            ルール作成は
+            = link_to "こちら", habits_select_path
+            から
+        - else
+          - @user.habits.order(created_at: :desc).each do|habit|
+            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+              = link_to "", habit.type == "Make" ? make_path(habit.hashid) : quit_path(habit.hashid)
+              %span.title
+                = habit.title
+              %span.number
+                = "#{habit.progress}%"
+      #tab2.tab-pane
+        - if @user.makes.empty?
+          %p.rule-empty-text
+            まだ自分ルールがありません
+            %br
+            ルール作成は
+            = link_to "こちら", makes_new_1_path
+            から
+        - else
+          - @user.makes.order(created_at: :desc).each do|make|
+            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+              = link_to "", make
+              %span.title
+                = make.title
+              %span.number
+                = "#{make.progress}%"
+      #tab3.tab-pane
+        - if @user.quits.empty?
+          %p.rule-empty-text
+            まだ自分ルールがありません
+            %br
+            ルール作成は
+            = link_to "こちら", quits_new_1_path
+            から
+        - else
+          - @user.quits.order(created_at: :desc).each do|quit|
+            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+              = link_to "", quit
+              %span.title
+                = quit.title
+              %span.number
+                = "#{quit.progress}%"
