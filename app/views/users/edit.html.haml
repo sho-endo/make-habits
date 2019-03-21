@@ -15,7 +15,7 @@
 
           = f.submit "プロフィールを更新する", class: "btn btn-info btn-block btn-signup mt-4"
       #password-edit.tab-pane.fade.col-12
-        = form_for(@user, url: update_password_path(params[:id])) do |f|
+        = form_for(@user, url: update_password_path(params[:id]), html: {id: "user_edit_2"}) do |f|
           = render "shared/error_messages", object: f.object
           = f.password_field :current_password, required: true, class: "form-control placeholder mt-5 mb-4", placeholder: "現在のパスワード"
 
