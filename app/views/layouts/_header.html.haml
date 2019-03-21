@@ -13,12 +13,13 @@
             %li.nav-item
               = link_to "自分ルール一覧", current_user, class: "nav-link"
             %li.nav-item.dropdown
-              %a.nav-link.dropdown-toggle#navbarDropdown{"data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true", "aria-expanded" => "false"}
+              %a.nav-link.dropdown-toggle#navbarDropdown{"href" => "#", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true", "aria-expanded" => "false"}
                 - if current_user.provider == "twitter"
                   %img.user-img{src: current_user.image_url}
-                %span.user-name
-                  = current_user.name
+                = current_user.name
               .dropdown-menu.dropdown-menu-right{"aria-haspopup" => "true"}
+                - if current_user.admin?
+                  = link_to "管理ページ", admin_users_path, class: "dropdown-item"
                 = link_to "プロフィール編集", edit_user_path(current_user), class: "dropdown-item"
                 = link_to "ログアウト", logout_path, method: "delete", class: "dropdown-item"
           - else
