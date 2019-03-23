@@ -1,6 +1,7 @@
 module SessionsHelper
   def log_in(user)
     session[:user_id] = user.id
+    user.update!({ failed_attempts: 0 })
   end
 
   def remember(user)
