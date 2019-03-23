@@ -92,6 +92,20 @@ class User < ApplicationRecord
     reset_sent_at < 2.hours.ago
   end
 
+  def fail_login
+    update!({ failed_attempts: failed_attempts + 1 })
+    if failed_attempts >= 5
+      update!({
+        locked_at: Time.current,
+        failed_attempts: 0,
+      })
+    end
+  end
+
+  def locked?
+    locked_at && (Time.current < locked_at + 30.minutes)
+  end
+
   private
 
     def downcase_email

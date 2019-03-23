@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
     @email = params[:password_reset][:email]
     @user = User.find_by(email: @email.downcase)
     unless @user
-      flash.now[:danger] = "メールアドレスが間違っています"
+      flash.now[:danger] = "メールアドレスが間違っているかアカウントが有効化されていません"
       render :new and return
     end
     if @user.activated
@@ -19,7 +19,7 @@ class PasswordResetsController < ApplicationController
       flash[:info] = "メールを送信しました"
       redirect_to root_url
     else
-      flash.now[:danger] = "アカウントが有効化されていません"
+      flash.now[:danger] = "メールアドレスが間違っているかアカウントが有効化されていません"
       render :new
     end
   end
