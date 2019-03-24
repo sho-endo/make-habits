@@ -1,14 +1,14 @@
 .container.user-show-wrapper
   %h1.text-center.my-5
     = "自分ルール一覧"
+  %ul.nav.nav-tabs.d-flex.justify-content-between
+    %li.nav-item
+      %a.nav-link.active{"href" => "#tab1", "data-toggle" => "tab"} すべて
+    %li.nav-item
+      %a.nav-link{"href" => "#tab2", "data-toggle" => "tab"} 身につけたい
+    %li.nav-item
+      %a.nav-link{"href" => "#tab3", "data-toggle" => "tab"} やめたい
   .jumbotron.mt-5.mx-auto.p-0
-    %ul.nav.nav-tabs
-      %li.nav-item
-        %a.nav-link.active{"href" => "#tab1", "data-toggle" => "tab"} すべて
-      %li.nav-item
-        %a.nav-link.border-left.border-right{"href" => "#tab2", "data-toggle" => "tab"} 身につけたい
-      %li.nav-item
-        %a.nav-link{"href" => "#tab3", "data-toggle" => "tab"} やめたい
     .tab-content
       #tab1.tab-pane.active
         - if @user.habits.empty?
