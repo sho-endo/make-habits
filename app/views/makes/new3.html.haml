@@ -1,5 +1,6 @@
 .container.makes-new-wrapper.text-center
-  .jumbotron.mt-5
+  = render "shared/stepbar", step: 2, type: "make"
+  .jumbotron
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
 

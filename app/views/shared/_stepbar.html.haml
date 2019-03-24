@@ -1,0 +1,22 @@
+%nav
+  %ol.step-bar
+    %li.visited<
+      %span<
+        1
+      %br step1
+    %li{class: "#{'visited' if step >= 2}"}<
+      %span<
+        2
+      %br step2
+    %li{class: "#{'visited' if step >= 3}"}<
+      %span<
+        3
+      %br step3
+    %li{class: "#{'visited' if step >= 4}"}<
+      %span<
+        4
+      %br step4
+    %li{class: "#{'visited' if step >= 5} #{'d-none' if type == "quit"}"}<
+      %span<
+        5
+      %br step5
