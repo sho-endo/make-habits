@@ -291,6 +291,50 @@ header {
 
 // makes new, quits new
 .makes-new-wrapper, .quits-new-wrapper {
+  .step-bar {
+    display: flex;
+    max-width: 700px;
+    position: relative;
+    margin: 3.5rem auto 1.5rem;
+    padding: 0;
+    text-align: center;
+  }
+  .step-bar li {
+    font-size: 12px;
+    list-style: none;
+    position: relative;
+    width: 33.333%;
+  }
+  .step-bar li:after {
+    background: #D0E1F9;
+    content: "";
+    width: calc(100% - 24px);
+    height: 4px;
+    position: absolute;
+    left: calc(-50% + 12px);
+    top: 10px;
+  }
+  .step-bar li:first-child:after {
+    display: none;
+  }
+  .step-bar li span {
+    background: #D0E1F9;
+    color: #ffffff;
+    display: inline-block;
+    height: 24px;
+    margin-bottom: 5px;
+    line-height: 24px;
+    width: 24px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+  }
+  .step-bar .visited:after {
+    background: #4D648D;
+  }
+  .step-bar .visited span {
+    background: #4D648D;
+  }
   .jumbotron {
     background-color: #f8f8f8;
     box-shadow: 0 3px 3px rgba(0, 0, 0, 0.3);
@@ -608,6 +652,9 @@ footer {
     }
   }
   .makes-new-wrapper, .quits-new-wrapper {
+    .step-bar li {
+      font-size: .7rem;
+    }
     .form-control, .btn{
       width: 100%;
     }
