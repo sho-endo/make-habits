@@ -73,7 +73,7 @@ class User < ApplicationRecord
     UserMailer.account_activation(self).deliver_now
   end
 
-  def reactivate
+  def resend_activation_email
     update_attribute(:activated, false) # rubocop:disable Rails/SkipsModelValidations
     create_activation_digest and self.save
     send_activation_email

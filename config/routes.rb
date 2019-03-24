@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "/users/:id/delete", to: "users#delete", as: "delete_page"
   resources :users, except: [:index, :update]
 
-  resources :account_activations, only: [:edit]
+  resources :account_activations, only: [:new, :create, :edit]
   resources :password_resets, only: [:new, :create, :edit, :update]
 
   resources :habits, only: [:destroy]

@@ -180,14 +180,17 @@ header {
   @include form-divide(100px)
 }
 
-// password reset
-.password-reset-wrapper {
+// password reset, account activation
+.password-reset-wrapper, .account-activation-wrapper {
   max-width: 800px;
   .heading {
     font-weight: 600;
     border-bottom: .7px solid #ccc;
     margin: 3rem 0 2rem;
     padding-bottom: .7rem
+  }
+  p {
+    line-height: 2.5;
   }
 }
 
@@ -500,7 +503,7 @@ footer {
     margin-top: 1.2rem;
     font-size: .7rem;
   }
-  .password-reset-wrapper {
+  .password-reset-wrapper, .account-activation-wrapper {
     h2 {
       font-size: 1.5rem;
     }
