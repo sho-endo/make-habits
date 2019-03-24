@@ -1,0 +1,15 @@
+.container.account-activation-wrapper
+  .row
+    .col-sm-10.offset-sm-1
+      %h2.heading
+        有効化メールを再送信
+      %p
+        アカウント登録時に送信されるメールからアカウントを有効化してください。
+      %p
+        下のフォームからアカウント有効化メールを再送信することも可能です。
+      %p
+        登録したメールアドレスを入力してください。
+      = form_for(:account_activation, url: account_activations_path) do |f|
+        = f.email_field :email, required: true, class: "form-control placeholder my-4", placeholder: "メールアドレス", value: "#{@email}"
+        %div
+          = f.submit "メールを送信する", class: "btn btn-secondary mt-2"

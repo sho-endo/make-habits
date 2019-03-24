@@ -46,7 +46,7 @@ class UsersController < ApplicationController # rubocop:disable Metrics/ClassLen
     @user = User.find(params[:id])
     before_change_email = @user.email
     if @user.update(user_params)
-      @user.reactivate unless @user.email == before_change_email
+      @user.resend_activation_email unless @user.email == before_change_email
       flash[:success] = "プロフィールを更新しました"
       redirect_to @user
     else

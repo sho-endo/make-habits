@@ -1,19 +1,19 @@
 class SessionsController < ApplicationController
   before_action :forbid_login_user, only: [:new, :create]
-  before_action :set_user, only: [:create]
+  before_action :check_user_existence, only: [:create]
   before_action :check_locked, only: [:create]
 
   def new
   end
 
   def create
-    if @user && @user.authenticate(params[:session][:password])
+    if @user.authenticate(params[:session][:password])
       log_in @user
       (params[:session][:remember_me] == "1") ? remember(@user) : forget(@user)
       @user.admin? ? redirect_to(admin_users_path) : redirect_back_or(@user)
       flash[:info] = "ログインしました"
     else
-      @user.fail_login if @user
+      @user.fail_login
       flash.now[:danger] = if @user.locked?
                              "アカウントがロックされました。30分後に解除されます。"
                            else
@@ -31,14 +31,18 @@ class SessionsController < ApplicationController
 
   private
 
-    def set_user
+    def check_user_existence
       @email = params[:session][:email]
       @user = User.find_by(email: @email.downcase)
+      unless @user
+        flash.now[:danger] = "メールアドレスかパスワードが間違っています"
+        render :new
+      end
     end
 
     def check_locked
-      if @user && @user.locked?
-        flash.now[:warning] = "アカウントがロックされています。解除されるまでしばらくお待ちください。"
+      if @user.locked?
+        flash.now[:warning] = "アカウントがロックされています。解除されるのはロックされてから30分後です。"
         render :new
       end
     end
