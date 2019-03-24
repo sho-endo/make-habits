@@ -41,7 +41,7 @@ gem "erb2haml"
 gem "haml-rails"
 
 # bootstrap
-gem "bootstrap", "~> 4.1.1"
+gem "bootstrap", "~> 4.3.1"
 gem "font-awesome-sass", "~> 5.6.1"
 gem "jquery-rails"
 
