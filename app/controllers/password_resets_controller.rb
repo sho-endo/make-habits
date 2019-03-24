@@ -2,17 +2,12 @@ class PasswordResetsController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   before_action :valid_user, only: [:edit, :update]
   before_action :check_expiration, only: [:edit, :update]
+  before_action :check_user_existence, only: [:create]
 
   def new
   end
 
   def create
-    @email = params[:password_reset][:email]
-    @user = User.find_by(email: @email.downcase)
-    unless @user
-      flash.now[:danger] = "メールアドレスが間違っているかアカウントが有効化されていません"
-      render :new and return
-    end
     if @user.activated
       @user.create_reset_digest
       @user.send_password_reset_email
@@ -65,6 +60,15 @@ class PasswordResetsController < ApplicationController
       if @user.password_reset_expired?
         flash[:danger] = "リンクの有効期限が切れています"
         redirect_to new_password_reset_url
+      end
+    end
+
+    def check_user_existence
+      @email = params[:password_reset][:email]
+      @user = User.find_by(email: @email.downcase)
+      unless @user
+        flash.now[:danger] = "メールアドレスが間違っているかアカウントが有効化されていません"
+        render :new
       end
     end
 end
