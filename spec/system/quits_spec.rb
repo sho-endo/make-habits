@@ -7,8 +7,8 @@ describe "自分ルール機能(quit)", type: :system do
 
   before do
     visit login_path
-    fill_in "メールアドレス", with: login_user.email
-    fill_in "パスワード", with: login_user.password
+    fill_in "session[email]", with: login_user.email
+    fill_in "session[password]", with: login_user.password
     click_button "ログイン"
   end
 
