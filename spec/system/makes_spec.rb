@@ -7,9 +7,7 @@ describe "自分ルール機能(make)", type: :system do
 
   before do
     visit login_path
-    fill_in "session[email]", with: login_user.email
-    fill_in "session[password]", with: login_user.password
-    click_button "ログイン"
+    login_as login_user
   end
 
   describe "一覧表示機能" do
@@ -75,7 +73,9 @@ describe "自分ルール機能(make)", type: :system do
       end
 
       it "正常に登録される" do
-        expect(page).to have_selector ".alert-success", text: "自分ルールを作成しました！"
+        within ".alert" do
+          expect(page).to have_content "自分ルールを作成しました！"
+        end
       end
     end
 
@@ -88,6 +88,22 @@ describe "自分ルール機能(make)", type: :system do
 
       it "次のページに遷移できない" do
         expect(page).to have_current_path makes_new_1_path
+      end
+    end
+  end
+
+  describe "削除機能" do
+    let(:login_user) { user_a }
+
+    before do
+      visit make_path(make_a)
+      click_link "ルールを削除する"
+      page.driver.browser.switch_to.alert.accept
+    end
+
+    it "自分の作成したルールを削除できる" do
+      within ".alert" do
+        expect(page).to have_content "自分ルールを削除しました"
       end
     end
   end
