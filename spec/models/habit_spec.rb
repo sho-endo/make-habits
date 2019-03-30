@@ -57,5 +57,22 @@ RSpec.describe Habit, type: :model do
         expect(habit).not_to be_valid
       end
     end
+
+    context "progressが無効な場合" do
+      it "存在しない場合" do
+        habit.progress = nil
+        expect(habit).not_to be_valid
+      end
+
+      it "浮動小数の場合" do
+        habit.progress = 63.4
+        expect(habit).not_to be_valid
+      end
+
+      it "0以上100以下ではない整数の場合" do
+        habit.progress = 235
+        expect(habit).not_to be_valid
+      end
+    end
   end
 end
