@@ -2,6 +2,7 @@ require "rails_helper"
 
 describe "ユーザー機能", type: :system do
   let!(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:user, name: "他のユーザー", email: "other_user@example.com") }
   let(:admin_user) { FactoryBot.create(:admin_user) }
 
   describe "新規登録機能（メールアドレス）" do
@@ -24,8 +25,9 @@ describe "ユーザー機能", type: :system do
     end
 
     context "ユーザーの入力が空のとき" do
-      it "ユーザー登録に失敗する" do
-        expect { click_button submit }.not_to change { User.count }
+      it "リクエストを送信できない" do
+        click_button submit
+        expect(page).to have_current_path signup_path
       end
     end
   end
@@ -73,6 +75,12 @@ describe "ユーザー機能", type: :system do
     before do
       login_as user
       visit edit_user_path(user)
+    end
+
+    it "他のユーザーの編集ページにはアクセスできない" do
+      visit edit_user_path(other_user)
+      expect(page).not_to have_current_path edit_user_path(other_user)
+      expect(page).to have_current_path user_path(user)
     end
 
     describe "ユーザー名/メールアドレス編集" do
@@ -173,6 +181,11 @@ describe "ユーザー機能", type: :system do
         within ".alert" do
           expect(page).to have_content "アカウントを削除しました"
         end
+      end
+
+      it "他のユーザーのアカウント削除ページにはアクセスできない" do
+        visit delete_page_path(other_user)
+        expect(page).not_to have_current_path delete_page_path(other_user)
       end
     end
 
