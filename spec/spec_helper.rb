@@ -15,6 +15,9 @@
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
 require "capybara/rspec"
+require "simplecov"
+
+SimpleCov.start "rails"
 
 RSpec.configure do |config|
   config.before(:each, type: :system) do
