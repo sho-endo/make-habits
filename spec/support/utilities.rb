@@ -23,7 +23,7 @@ def login_as(user, options = {})
   if options[:no_capybara]
     # Capybaraを使用していない場合でもログインできるようにする
     remember_token = User.new_token
-    user.update_attribute(:remember_digest, User.digest(remember_token))
+    user.update!({ remember_digest: User.digest(remember_token) })
     test_cookies = ActionDispatch::Request.new(Rails.application.env_config.deep_dup).cookie_jar
     test_cookies.signed[:user_id] = user.id
     cookies[:user_id] = test_cookies[:user_id]
