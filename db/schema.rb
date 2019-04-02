@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_23_044249) do
+ActiveRecord::Schema.define(version: 2019_04_02_123341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 2019_03_23_044249) do
     t.datetime "reset_sent_at"
     t.string "provider"
     t.string "uid"
-    t.string "image_url"
+    t.string "avatar"
     t.boolean "admin", default: false
     t.integer "failed_attempts", default: 0, null: false
     t.datetime "locked_at"

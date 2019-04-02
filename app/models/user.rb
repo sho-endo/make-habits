@@ -40,7 +40,7 @@ class User < ApplicationRecord
       user.name = name
       user.email = User.dummy_email(uid, provider)
       user.password = User.new_token
-      user.image_url = image_url
+      user.avatar = image_url
       user.activated = true
     end
   end
