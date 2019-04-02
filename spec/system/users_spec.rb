@@ -2,7 +2,12 @@ require "rails_helper"
 
 describe "ユーザー機能", type: :system do
   let!(:user) { FactoryBot.create(:user) }
+  let(:other_user) { FactoryBot.create(:user, name: "他のユーザー", email: "other_user@example.com") }
+  let(:activated_user) { FactoryBot.create(:activated_user) }
   let(:admin_user) { FactoryBot.create(:admin_user) }
+
+  let(:activation_mail) { ActionMailer::Base.deliveries.last }
+  let(:password_reset_mail) { ActionMailer::Base.deliveries.last }
 
   describe "新規登録機能（メールアドレス）" do
     let(:submit) { "新規登録" }
@@ -21,11 +26,19 @@ describe "ユーザー機能", type: :system do
         expect { click_button submit }.to change { User.count }.by(1)
         expect(page).to have_selector ".alert-success", text: "ユーザー登録しました"
       end
+
+      it "ユーザーにアカウント有効化メールが送信される" do
+        click_button submit
+        expect(activation_mail.to).to eq ["tom@ne.jp"]
+        expect(activation_mail.from).to eq ["noreply@example.com"]
+        expect(activation_mail.subject).to match "アカウント有効化"
+      end
     end
 
     context "ユーザーの入力が空のとき" do
-      it "ユーザー登録に失敗する" do
-        expect { click_button submit }.not_to change { User.count }
+      it "リクエストを送信できない" do
+        click_button submit
+        expect(page).to have_current_path signup_path
       end
     end
   end
@@ -69,10 +82,46 @@ describe "ユーザー機能", type: :system do
     end
   end
 
+  describe "アカウント有効化機能" do
+    context "正しいリンクからアクセスしたとき" do
+      before do
+        user.send_activation_email
+        visit edit_account_activation_url(user.activation_token, email: user.email)
+      end
+
+      it "アカウントを有効化する" do
+        within ".alert" do
+          expect(page).to have_content "アカウントを有効化しました"
+        end
+        expect(user.reload.activated).to eq true
+      end
+    end
+
+    context "無効なリンクからアクセスしたとき" do
+      before do
+        user.send_activation_email
+        visit edit_account_activation_url("invalid_token", email: user.email)
+      end
+
+      it "アカウントを有効化しない" do
+        within ".alert" do
+          expect(page).to have_content "このリンクは無効です"
+        end
+        expect(user.reload.activated).to eq false
+      end
+    end
+  end
+
   describe "プロフィール編集機能" do
     before do
       login_as user
       visit edit_user_path(user)
+    end
+
+    it "他のユーザーの編集ページにはアクセスできない" do
+      visit edit_user_path(other_user)
+      expect(page).not_to have_current_path edit_user_path(other_user)
+      expect(page).to have_current_path user_path(user)
     end
 
     describe "ユーザー名/メールアドレス編集" do
@@ -92,6 +141,12 @@ describe "ユーザー機能", type: :system do
           end
           expect(user.reload.name).to eq new_name
           expect(user.reload.email).to eq new_email
+        end
+
+        it "アカウント有効化メールが送信される" do
+          expect(activation_mail.to).to eq [new_email]
+          expect(activation_mail.from).to eq ["noreply@example.com"]
+          expect(activation_mail.subject).to match "アカウント有効化"
         end
       end
 
@@ -174,6 +229,11 @@ describe "ユーザー機能", type: :system do
           expect(page).to have_content "アカウントを削除しました"
         end
       end
+
+      it "他のユーザーのアカウント削除ページにはアクセスできない" do
+        visit delete_page_path(other_user)
+        expect(page).not_to have_current_path delete_page_path(other_user)
+      end
     end
 
     context "管理ユーザーとしてログインしているとき" do
@@ -187,6 +247,150 @@ describe "ユーザー機能", type: :system do
         click_link "削除", match: :first
         page.driver.browser.switch_to.alert.accept
         expect(page).not_to have_content user.name
+      end
+    end
+  end
+
+  describe "アカウント有効化メール再送信機能" do
+    before { visit new_account_activation_path }
+
+    context "メールアドレスが存在しないとき" do
+      before { fill_in "account_activation[email]", with: "dummy@example.com" }
+
+      it "メールは送信されない" do
+        expect { click_button "メールを送信する" }.not_to change { ActionMailer::Base.deliveries }
+        within ".alert" do
+          expect(page).to have_content "メールアドレスが間違っているかすでに有効化されています"
+        end
+      end
+    end
+
+    context "すでにアカウントが有効化されているとき" do
+      before { fill_in "account_activation[email]", with: activated_user.email }
+
+      it "メールは送信されない" do
+        expect { click_button "メールを送信する" }.not_to change { ActionMailer::Base.deliveries.count }
+        within ".alert" do
+          expect(page).to have_content "メールアドレスが間違っているかすでに有効化されています"
+        end
+      end
+    end
+
+    context "入力されたメールアドレスが正しいとき" do
+      before { fill_in "account_activation[email]", with: user.email }
+
+      it "メールが送信される" do
+        expect { click_button "メールを送信する" }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(activation_mail.to).to eq [user.email]
+        within ".alert" do
+          expect(page).to have_content "メールを送信しました"
+        end
+      end
+    end
+  end
+
+  describe "パスワード再設定メール送信機能" do
+    before { visit new_password_reset_path }
+
+    context "登録されていないメールアドレスを入力したとき" do
+      before { fill_in "password_reset[email]", with: "non-exist@example.com" }
+
+      it "メールは送信されない" do
+        expect { click_button "メールを送信する" }.not_to change { ActionMailer::Base.deliveries.count }
+        within ".alert" do
+          expect(page).to have_content "メールアドレスが間違っているかアカウントが有効化されていません"
+        end
+      end
+    end
+
+    context "アカウントが有効化されていないとき" do
+      before { fill_in "password_reset[email]", with: user.email }
+
+      it "メールは送信されない" do
+        expect { click_button "メールを送信する" }.not_to change { ActionMailer::Base.deliveries.count }
+        within ".alert" do
+          expect(page).to have_content "メールアドレスが間違っているかアカウントが有効化されていません"
+        end
+      end
+    end
+
+    context "有効化されたアカウントのメールアドレスを入力したとき" do
+      before { fill_in "password_reset[email]", with: activated_user.email }
+
+      it "メールが送信される" do
+        expect { click_button "メールを送信する" }.to change { ActionMailer::Base.deliveries.count }.by(1)
+        expect(password_reset_mail.to).to eq [activated_user.email]
+        within ".alert" do
+          expect(page).to have_content "メールを送信しました"
+        end
+      end
+    end
+  end
+
+  describe "パスワード再設定機能" do
+    let(:new_password) { "newpassword" }
+
+    before do
+      activated_user.create_reset_digest and activated_user.reload
+      activated_user.send_password_reset_email
+    end
+
+    context "リンクの期限が切れているとき" do
+      before do
+        activated_user.update!({ reset_sent_at: 3.hours.ago })
+        visit edit_password_reset_url(activated_user.reset_token, email: activated_user.email)
+      end
+
+      it "パスワード再設定ページにアクセスできない" do
+        within ".alert" do
+          expect(page).to have_content "リンクの有効期限が切れています"
+        end
+        expect(page).to have_current_path new_password_reset_path
+      end
+    end
+
+    context "リンクが正しくないとき" do
+      before do
+        visit edit_password_reset_url("invalid_token", email: activated_user.email)
+      end
+
+      it "パスワード再設定ページにアクセスできない" do
+        within ".alert" do
+          expect(page).to have_content "このリンクは無効です"
+        end
+        expect(page).to have_current_path root_path
+      end
+    end
+
+    context "新しいパスワードの入力が正しいとき" do
+      before do
+        visit edit_password_reset_url(activated_user.reset_token, email: activated_user.email)
+        fill_in "user[password]", with: new_password
+        fill_in "user[password_confirmation]", with: new_password
+        click_button "パスワードを変更する"
+      end
+
+      it "パスワードが変更される" do
+        within ".alert" do
+          expect(page).to have_content "パスワードを更新しました"
+        end
+        expect(activated_user.reload.authenticate(new_password)).to eq activated_user
+      end
+    end
+
+    context "新しいパスワードの入力が正しくないとき" do
+      before do
+        visit edit_password_reset_url(activated_user.reset_token, email: activated_user.email)
+        fill_in "user[password]", with: new_password
+        fill_in "user[password_confirmation]", with: "hogehoge"
+        click_button "パスワードを変更する"
+      end
+
+      it "パスワードは変更されない" do
+        within ".error-message" do
+          expect(page).to have_content "パスワードの入力が一致していません"
+        end
+        expect(activated_user.reload.authenticate(new_password)).to eq false
       end
     end
   end
