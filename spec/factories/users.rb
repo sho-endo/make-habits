@@ -11,4 +11,11 @@ FactoryBot.define do
     password { "password" }
     admin { true }
   end
+
+  factory :activated_user, class: User do
+    name { "有効化されているユーザー" }
+    email { "activated@example.com" }
+    password { "password" }
+    activated { true }
+  end
 end
