@@ -15,7 +15,9 @@
             %li.nav-item.dropdown
               %a.nav-link.dropdown-toggle#navbarDropdown{"href" => "#", "data-toggle" => "dropdown", "role" => "button", "aria-haspopup" => "true", "aria-expanded" => "false"}
                 - if current_user.provider == "twitter"
-                  %img.user-img{src: current_user.avatar}
+                  = image_tag current_user.image_url, class: "user-img"
+                - else
+                  = image_tag current_user.avatar.url, class: "user-img"
                 = current_user.name
               .dropdown-menu.dropdown-menu-right{"aria-haspopup" => "true"}
                 - if current_user.admin?

@@ -54,6 +54,10 @@ gem "kaminari"
 
 gem "hashid-rails", "~> 1.0"
 
+# image upload
+gem "carrierwave", "~> 1.0"
+gem "mini_magick"
+
 group :development, :test do
   gem "onkcop", require: false
   gem "pry-byebug"

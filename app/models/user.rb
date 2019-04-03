@@ -16,6 +16,8 @@ class User < ApplicationRecord
   has_many :makes, dependent: :destroy
   has_many :quits, dependent: :destroy
 
+  mount_uploader :avatar, AvatarUploader
+
   # ハッシュ値を返す
   def self.digest(string)
     cost = if ActiveModel::SecurePassword.min_cost
@@ -40,7 +42,7 @@ class User < ApplicationRecord
       user.name = name
       user.email = User.dummy_email(uid, provider)
       user.password = User.new_token
-      user.avatar = image_url
+      user.image_url = image_url
       user.activated = true
     end
   end
