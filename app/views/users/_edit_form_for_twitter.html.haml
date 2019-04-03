@@ -1,9 +1,20 @@
-%p.text-center
+%p.text-center.mb-0
   プロフィール編集
+%img#avatar-img-prev.d-none{src: "#"}
+- if current_user.avatar?
+  = image_tag current_user.avatar.url, class: "avatar-present-img"
+- else
+  -# Twitterのプロフィール画像を原寸大で取得するための処理
+  = image_tag current_user.image_url.gsub(/_normal/, ""), class: "avatar-present-img"
 = form_for(user, url: update_profile_path(params[:id])) do |f|
   = render "shared/error_messages", object: f.object
-  = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mt-3 mb-4", placeholder: "新しいユーザー名", value: ""
+  .text-center
+    = f.label :avatar, "プロフィール画像を選択", class: "file-upload-label"
+  = f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "d-none"
+
+  = f.label :name, "ユーザー名", class: "form-label mt-4"
+  = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mb-4", placeholder: "新しいユーザー名", value: current_user.name
   
   = hidden_field_tag :email, user.email
 
-  = f.submit "プロフィールを更新する", class: "btn btn-info btn-block btn-signup mt-4"
+  = f.submit "プロフィールを更新する", class: "btn btn-info btn-block btn-update mt-4"

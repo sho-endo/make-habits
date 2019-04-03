@@ -22,6 +22,7 @@ ja:
         password_digest:
         created_at: 登録日時
         updated_at: 更新日時
+        avatar: プロフィール画像
         remember_digest:
         activation_digest:
         activated:
