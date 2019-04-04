@@ -5,13 +5,22 @@
     .select-edit-tab.pb-2{ "data-target" => "#password-edit", "data-toggle" => "tab"} パスワード
 .tab-content.tabs-profile-edit.col-12
   #profile-edit.tab-pane.fade.active.show.in
+    = image_tag "", class: "d-none", id: "avatar-img-prev"
+    = image_tag current_user.avatar.url, class: "avatar-present-img"
     = form_for(user, url: update_profile_path(params[:id])) do |f|
-      = render "shared/error_messages", object: f.object
-      = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mt-5 mb-4", placeholder: "ユーザー名"
+      .text-center
+        = f.label :avatar, "プロフィール画像を選択", class: "file-upload-label"
+      = f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "d-none"
 
+      = render "shared/error_messages", object: f.object
+
+      = f.label :name, class: "form-label mt-4"
+      = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mb-3", placeholder: "ユーザー名"
+
+      = f.label :email, class: "form-label"
       = f.email_field :email, required: true, maxlength: 255, class: "form-control placeholder mb-4", placeholder: "メールアドレス"
 
-      = f.submit "プロフィールを更新する", class: "btn btn-info btn-block btn-signup mt-4"
+      = f.submit "プロフィールを更新する", class: "btn btn-info btn-block btn-update mt-4"
   #password-edit.tab-pane.fade.col-12
     = form_for(user, url: update_password_path(params[:id]), html: {id: "user_edit_2"}) do |f|
       = render "shared/error_messages", object: f.object
@@ -21,4 +30,4 @@
 
       = f.password_field :password_confirmation, required: true, maxlength: 50, class: "form-control placeholder", placeholder: "新しいパスワード（確認）"
 
-      = f.submit "パスワードを更新する", class: "btn btn-info btn-block btn-signup mt-4"
+      = f.submit "パスワードを更新する", class: "btn btn-info btn-block btn-update mt-4"

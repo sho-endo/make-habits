@@ -11,10 +11,13 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { in: 6..50 }, allow_nil: true
+  validate :avatar_size
 
   has_many :habits, dependent: :destroy
   has_many :makes, dependent: :destroy
   has_many :quits, dependent: :destroy
+
+  mount_uploader :avatar, AvatarUploader
 
   # ハッシュ値を返す
   def self.digest(string)
@@ -119,5 +122,11 @@ class User < ApplicationRecord
 
     def forbid_destroy_last_admin_user
       throw(:abort) if self.admin? && User.where(admin: true).count == 1
+    end
+
+    def avatar_size
+      if avatar.size > 5.megabytes
+        errors.add(:avatar, "は5MB以下にしてください")
+      end
     end
 end

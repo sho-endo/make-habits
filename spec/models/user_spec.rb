@@ -10,6 +10,30 @@ RSpec.describe User, type: :model do
       user.save!
       expect(user.reload.email).to eq "hoge@example.com"
     end
+
+    it "アバター画像の拡張子がjpgのとき" do
+      image_path = File.join(Rails.root, "spec/fixtures/icon.jpg")
+      user.avatar = File.open(image_path)
+      expect(user).to be_valid
+    end
+
+    it "アバター画像の拡張子がjpegのとき" do
+      image_path = File.join(Rails.root, "spec/fixtures/icon.jpeg")
+      user.avatar = File.open(image_path)
+      expect(user).to be_valid
+    end
+
+    it "アバター画像の拡張子がpngのとき" do
+      image_path = File.join(Rails.root, "spec/fixtures/icon.png")
+      user.avatar = File.open(image_path)
+      expect(user).to be_valid
+    end
+
+    it "アバター画像の拡張子がgifのとき" do
+      image_path = File.join(Rails.root, "spec/fixtures/icon.gif")
+      user.avatar = File.open(image_path)
+      expect(user).to be_valid
+    end
   end
 
   describe "無効なケース" do
@@ -65,6 +89,22 @@ RSpec.describe User, type: :model do
 
       it "51文字以上の場合" do
         user.password = "a" * 51
+        expect(user).not_to be_valid
+      end
+    end
+
+    context "アバター画像が無効な場合" do
+      let(:large_image_path) { File.join(Rails.root, "spec/fixtures/large.jpg") }
+      let(:large_image) { Rack::Test::UploadedFile.new(large_image_path) }
+      let(:invalid_file_path) { File.join(Rails.root, "spec/fixtures/invalid.rb") }
+
+      it "5MB以上の場合" do
+        user.avatar = large_image
+        expect(user).not_to be_valid
+      end
+
+      it "拡張子がjpg, jpeg, gif, png以外の場合" do
+        user.avatar = File.open(invalid_file_path)
         expect(user).not_to be_valid
       end
     end

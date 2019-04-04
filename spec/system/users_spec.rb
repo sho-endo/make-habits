@@ -154,10 +154,36 @@ describe "ユーザー機能", type: :system do
         before do
           fill_in "user[name]", with: ""
           fill_in "user[email]", with: ""
+          click_button "プロフィールを更新する"
         end
 
         it "リクエストを送信できない" do
           expect(page).to have_current_path edit_user_path(user)
+        end
+      end
+    end
+
+    describe "プロフィール画像更新機能" do
+      context "正しい画像のとき" do
+        before do
+          attach_file "user[avatar]", "#{Rails.root}/spec/fixtures/icon.png", make_visible: true
+          click_button "プロフィールを更新する"
+        end
+
+        it "更新に成功する" do
+          within ".alert" do
+            expect(page).to have_content "プロフィールを更新しました"
+          end
+        end
+      end
+
+      context "5MB以上の画像がフォームにセットされたとき" do
+        before do
+          attach_file "user[avatar]", "#{Rails.root}/spec/fixtures/large.jpg", make_visible: true
+        end
+
+        it "アラートが表示される" do
+          expect(page.driver.browser.switch_to.alert.text).to eq "画像は５MB以下のものにしてください"
         end
       end
     end

@@ -49,6 +49,11 @@ ul {
   flex: 1;  // footerを最下部に固定するため
 }
 
+.form-label {
+  font-size: .7rem;
+  opacity: .7;
+}
+
 // header
 header {
   .navbar {
@@ -60,9 +65,10 @@ header {
   .nav-link {
     font-size: 1.1em;
   }
-  .user-img {
+  .header-avatar {
     border-radius: 50%;
     height: 30px;
+    width: 30px;
     margin-right: 1px;
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
@@ -207,6 +213,28 @@ header {
       color: rgba(0, 0, 0, 0.7);
       border-bottom: 1px solid rgba(0, 0, 0, 0.7);
     }
+  }
+  #avatar-img-prev, .avatar-present-img {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: block;
+    margin: 2rem auto;
+  }
+  .file-upload-label {
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.5rem 0.75em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    transition: .4s;
+  }
+  .file-upload-label:hover {
+    cursor: pointer;
+    background: #00bcd4;
+    color: white;
   }
   .invite-delete {
     display: block;
@@ -515,13 +543,17 @@ footer {
   .description {
     font-size: 110%;
   }
-  .btn-signup {
+  .btn-signup, .btn-update {
     margin-top: 3rem !important;
   }
 }
 
 // 小デバイス用（小さめタブレット）
 @media (max-width: 767.98px) {
+  .btn, .file-upload-label {
+    font-size: .8rem;
+  }
+
   header {
     .nav-item {
       border-top: 1px solid #dee2e6;
@@ -578,9 +610,6 @@ footer {
     }
     .placeholder {
       font-size: .6rem;
-    }
-    .btn-signup {
-      font-size: .8rem;
     }
   }
   .user-delete-wrapper {
