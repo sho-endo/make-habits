@@ -3,6 +3,7 @@ FactoryBot.define do
     name { "テストユーザー" }
     email { "test1@example.com" }
     password { "password" }
+    avatar { Rack::Test::UploadedFile.new(File.join(Rails.root, "spec/fixtures/icon.png")) }
   end
 
   factory :admin_user, class: User do
