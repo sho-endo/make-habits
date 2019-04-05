@@ -1,6 +1,7 @@
 class QuitsController < HabitsController
   before_action :check_login
   before_action :forbid_direct_access, except: [:new1, :show]
+  before_action :check_number_of_quits, only: [:new1]
   before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7]
   before_action :set_rule1, only: [:new6, :new7]
   before_action :check_correct_user, only: [:show]
@@ -57,6 +58,13 @@ class QuitsController < HabitsController
 
     def forbid_direct_access
       redirect_to quits_new_1_path if request.referer.nil?
+    end
+
+    def check_number_of_quits
+      if current_user.quits.count >= 15
+        flash[:warning] = "同時に作成できるルールは15個ずつまでです"
+        redirect_to current_user
+      end
     end
 
     def set_title
