@@ -12,7 +12,7 @@
   %body
     = render 'layouts/header'
     - flash.each do |msg_type, msg|
-      = content_tag(:div, msg, class: "alert alert-#{msg_type} text-center")
+      = content_tag(:div, msg, class: "alert alert-#{msg_type} text-center text-break")
     .page-wrapper
       = yield
     = render 'layouts/footer'

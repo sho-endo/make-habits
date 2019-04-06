@@ -1,4 +1,12 @@
 .container
+  .card.card-container.p-3.demo-account
+    以下のアドレスとパスワードでログイン可能です
+    %br
+    %br
+    .font-weight-bold
+      test_user@example.com
+      %br
+      password
   .card.card-container
     = image_tag "logo.png", size: "200x55", class: "mx-auto"
     = link_to  '/auth/twitter', class: "btn btn-twitter mt-4" do
@@ -16,3 +24,4 @@
 
       = f.submit "ログイン", class: "btn btn-success btn-block mt-2"
       = link_to "パスワードをお忘れの場合", new_password_reset_path, class: "invite-text"
+      = link_to "アカウントを持っていない場合", signup_path, class: "invite-text"
