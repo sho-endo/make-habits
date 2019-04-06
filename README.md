@@ -10,7 +10,7 @@
 
 ```md
 メールアドレス: test_user@example.com
-パスワード: password
+パスワード: test1234
 ```
 
 ## 実装した主な機能

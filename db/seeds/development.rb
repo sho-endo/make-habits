@@ -12,6 +12,11 @@ User.create!(
   password: "foobar",
 )
 
+User.create!(
+  name: "test_user",
+  email: "test_user@example.com",
+  password: "test1234",
+)
 50.times do |i|
   User.create(
     name: "hoge",
@@ -20,7 +25,7 @@ User.create!(
   )
 end
 
-15.times do |i|
+50.times do |i|
   user.makes.create(
     title: "make#{i}",
     rule1: "hoge",
@@ -28,7 +33,7 @@ end
   )
 end
 
-15.times do |i|
+50.times do |i|
   user.quits.create(
     title: "quit#{i}",
     rule1: "hoge",

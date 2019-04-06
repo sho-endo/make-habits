@@ -5,3 +5,10 @@ User.create!(
   admin: true,
   activated: true,
 )
+
+User.create!(
+  name: "test_user",
+  email: "test_user@example.com",
+  password: "test1234",
+  activated: true,
+)
