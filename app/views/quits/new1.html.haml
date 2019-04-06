@@ -9,6 +9,6 @@
       やめたい習慣はなんですか？
 
     = form_for(:quit, url: quits_new_2_path, method: :get) do |f|
-      = f.text_field :title, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "ex）ついYouTubeを見てしまう"
+      = f.text_field :title, required: true, maxlength: 255, class: "form-control mt-5 placeholder", placeholder: "ex）ついYouTubeを見てしまう"
 
       = f.submit "次へ", class: "btn btn-info mt-5"

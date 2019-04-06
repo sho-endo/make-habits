@@ -54,6 +54,11 @@ ul {
   opacity: .7;
 }
 
+.placeholder {
+  font-size: .8rem;
+  color: #555;
+}
+
 // header
 header {
   .navbar {
@@ -161,10 +166,6 @@ header {
   margin: 2rem auto;
   max-width: 400px;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
-}
-.placeholder {
-  font-size: .8rem;
-  color: #555;
 }
 .invite-text {
   display: inline-block;
@@ -389,6 +390,9 @@ header {
   }
   ::placeholder {
     color: rgba(134, 164, 164, 0.7);
+  }
+  .placeholder {
+    font-size: 1rem;
   }
   .hint-text {
     font-size: 1.2rem;
@@ -669,6 +673,11 @@ footer {
           font-size: 1.1rem;
         }
       }
+    }
+  }
+  .makes-new-wrapper, .quits-new-wrapper {
+    .placeholder {
+      font-size: .7rem;
     }
   }
 }

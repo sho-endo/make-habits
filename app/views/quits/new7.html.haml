@@ -11,7 +11,8 @@
     = form_for(:quit, url: quits_path) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
-      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", placeholder: "２つ目の自分ルールを入力してください"
+      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5 placeholder",
+                            placeholder: "やめたい習慣を簡単にはできないようにする自分ルールを作成してください"
 
       = f.submit "完成！", class: "btn btn-info mt-5"
 
