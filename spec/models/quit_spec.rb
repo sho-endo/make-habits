@@ -75,10 +75,10 @@ RSpec.describe Quit, type: :model do
       end
     end
 
-    context "16個以上作成しようとした場合" do
+    context "51個以上作成しようとした場合" do
       let(:user) { FactoryBot.create(:user, email: "test@example.com") }
       before do
-        15.times do
+        50.times do
           user.quits.create!(
             title: "hoge",
             rule1: "foo",
