@@ -1,24 +1,45 @@
-# README
+# MakeHabits
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+習慣づくりのための自分ルールを作成するアプリです。  
+質問に答えていくことで、挫折しにくい自分ルールを作成することができます。  
+新しい習慣づくりだけではなく、悪い習慣をやめるためにも使えます。
 
-Things you may want to cover:
+## デモ
 
-* Ruby version
+<https://make-habits.herokuapp.com>
 
-* System dependencies
+* デモ用アカウント
 
-* Configuration
+```md
+メールアドレス: test_user@example.com
+パスワード: password
+```
 
-* Database creation
+## 実装した主な機能
 
-* Database initialization
+* ログイン機能
+  * 認証まわりの勉強を兼ねてdevise等のgemを使わずに実装しました
+* Twitterログイン機能
+* メール送信機能
+  * アカウント有効化とパスワード再設定の時に使用
+* 管理ユーザー機能
+  * 管理ユーザーのみユーザー一覧へのアクセスと他のユーザーの削除が可能
+  * ユーザー一覧ページではページネーション機能を実装
+* 画像アップロード機能
+  * 本番環境ではS3を使用
+* DBテーブルのリレーション管理
+* 単一テーブル継承（STI）機能
+* ルール機能
+  * 作成, 一覧, 編集, 削除
+* ajaxを利用した非同期通信
+* html2canvasを利用した画像ダウンロード機能
+* rubocop
+* RSpecによる統合テスト,単体テスト
 
-* How to run the test suite
+## バージョン
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* ruby 2.5.1
+* rails 5.2.2
+* node 10.8.0
+* yarn 1.9.4
+* PostgreSQL 10.5
