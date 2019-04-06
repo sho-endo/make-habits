@@ -11,7 +11,8 @@
     = form_for(:make, url: makes_path) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
-      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", value: "#{@situation}"
+      = f.text_area :rule2, required: true, maxlength: 255, class: "form-control mt-5", value: "#{@situation}",
+                            placeholder: "「挫折しそうな状況になったら対策を行う」という形で自分ルールを作成してください"
 
       = f.submit "完成！", class: "btn btn-info mt-5"
 
