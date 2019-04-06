@@ -61,8 +61,8 @@ class QuitsController < HabitsController
     end
 
     def check_number_of_quits
-      if current_user.quits.count >= 15
-        flash[:warning] = "同時に作成できるルールは15個ずつまでです"
+      if current_user.quits.count >= 50
+        flash[:warning] = "同時に作成できるルールは50個ずつまでです"
         redirect_to current_user
       end
     end

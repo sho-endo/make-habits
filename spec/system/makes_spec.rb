@@ -91,10 +91,10 @@ describe "自分ルール機能(make)", type: :system do
       end
     end
 
-    context "すでに15個のルールがあるとき" do
+    context "すでに50個のルールがあるとき" do
       before do
-        # 上記のテストで１つ作成されているためここでは14個
-        14.times do
+        # 上記のテストで１つ作成されているためここでは49個
+        49.times do
           login_user.makes.create!(
             title: "hoge",
             rule1: "foo",
@@ -106,7 +106,7 @@ describe "自分ルール機能(make)", type: :system do
 
       it "マイページにリダイレクトされる" do
         within ".alert" do
-          expect(page).to have_content "同時に作成できるルールは15個ずつまでです"
+          expect(page).to have_content "同時に作成できるルールは50個ずつまでです"
         end
         expect(page).to have_current_path user_path(login_user)
       end
