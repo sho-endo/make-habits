@@ -1,5 +1,12 @@
 .container
   .card.card-container
+    %p
+      テストユーザーとしてログインできます
+    = form_for(:session, url: login_path) do |f|
+      = f.hidden_field :email, value: "test_user@example.com"
+      = f.hidden_field :password, value: "test1234"
+      = f.submit "お試しログイン", class: "btn btn-info btn-block demo-btn mt-3 mb-2 mx-auto"
+  .card.card-container
     = image_tag "logo.png", size: "200x55", class: "mx-auto"
     = link_to  '/auth/twitter', class: "btn btn-twitter mt-4", id: "twitter-signup" do
       = icon("fab", "twitter", class: "mr-1")
