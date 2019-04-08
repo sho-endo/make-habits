@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get "/admin/users", to: "users#index"
   patch "/users/:id/profile", to: "users#update_profile", as: "update_profile"
   patch "/users/:id/password", to: "users#update_password", as: "update_password"
+  patch "/users/:id/avatar", to: "users#update_avatar", as: "update_avatar" # デモアカウント用
   get "/users/:id/delete", to: "users#delete", as: "delete_page"
   resources :users, except: [:index, :update]
 

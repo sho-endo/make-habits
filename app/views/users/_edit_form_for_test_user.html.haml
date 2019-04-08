@@ -1,0 +1,40 @@
+%p.mb-4
+  デモ用アカウントではプロフィール画像のみ編集できます
+%ul.nav.nav-tabs.nav-justified.text-center
+  %li.active.col-6
+    .show.active.select-edit-tab.pb-2{ "data-target" => "#profile-edit", "data-toggle" => "tab"} プロフィール
+  %li.col-6
+    .select-edit-tab.pb-2{ "data-target" => "#password-edit", "data-toggle" => "tab"} パスワード
+.tab-content.tabs-profile-edit.col-12
+  #profile-edit.tab-pane.fade.active.show.in
+    = image_tag "", class: "d-none", id: "avatar-img-prev"
+    = image_tag current_user.avatar.url, class: "avatar-present-img"
+    = form_for(user, url: update_avatar_path(params[:id])) do |f|
+      .text-center
+        = f.label :avatar, "プロフィール画像を選択", class: "file-upload-label"
+      = f.file_field :avatar, accept: "image/jpeg,image/gif,image/png", class: "d-none"
+
+      = render "shared/error_messages", object: f.object
+
+      = f.label :name, class: "form-label mt-4"
+      = f.text_field :name, required: true, maxlength: 50, class: "form-control placeholder mb-3",
+                            placeholder: "ユーザー名", readonly: true
+
+      = f.label :email, class: "form-label"
+      = f.email_field :email, required: true, maxlength: 255, class: "form-control placeholder mb-4",
+                              placeholder: "メールアドレス", readonly: true
+
+      = f.submit "プロフィール画像を更新する", class: "btn btn-info btn-block btn-update mt-4"
+  #password-edit.tab-pane.fade.col-12
+    = form_for(user, url: update_password_path(params[:id]), html: {id: "user_edit_2"}) do |f|
+      = render "shared/error_messages", object: f.object
+      = f.password_field :current_password, required: true, class: "form-control placeholder mt-5 mb-4",
+                                            placeholder: "現在のパスワード", readonly: true
+
+      = f.password_field :password, required: true, maxlength: 50, class: "form-control placeholder mb-4",
+                                    placeholder: "新しいパスワード（６文字以上）", readonly: true
+
+      = f.password_field :password_confirmation, required: true, maxlength: 50, class: "form-control placeholder",
+                                                 placeholder: "新しいパスワード（確認）", readonly: true
+
+      = f.submit "パスワードを更新する", class: "btn btn-info btn-block btn-update mt-4", disabled: true

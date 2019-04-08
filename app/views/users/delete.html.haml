@@ -6,4 +6,9 @@
           アカウントを削除すると、これまでに作成されたデータは全て削除されます。
         %li
           削除されたデータを復旧することはできません。
-    = link_to "アカウントを削除する", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"
+    - if @user.email == "test_user@example.com" # デモアカウント用
+      %button.btn.btn-danger{href: "#", disabled: true} アカウントを削除する
+      %span.mt-2
+        デモアカウントは削除できません
+    - else
+      = link_to "アカウントを削除する", user_path(@user), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger"

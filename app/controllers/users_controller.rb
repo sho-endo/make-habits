@@ -5,6 +5,7 @@ class UsersController < ApplicationController # rubocop:disable Metrics/ClassLen
   before_action :check_correct_user, only: [:show, :edit, :update_profile, :update_password, :delete]
   before_action :check_admin, only: [:index]
   before_action :check_destroy, only: [:destroy]
+  before_action :forbid_test_user, only: [:update_profile, :update_password, :destroy]
 
   def index
     @users = User.order(id: :asc).page(params[:page])
@@ -72,6 +73,17 @@ class UsersController < ApplicationController # rubocop:disable Metrics/ClassLen
     end
   end
 
+  # デモアカウント用
+  def update_avatar
+    @user = User.find(params[:id])
+    if @user.update(params.require(:user).permit(:avatar))
+      flash[:success] = "プロフィール画像を更新しました"
+      redirect_to edit_user_path(@user)
+    else
+      render :edit
+    end
+  end
+
   def show
     @user = User.find(params[:id])
   end
@@ -120,5 +132,14 @@ class UsersController < ApplicationController # rubocop:disable Metrics/ClassLen
     def check_destroy
       @user = User.find(params[:id])
       redirect_to(current_user) unless current_user.admin? || @user == current_user
+    end
+
+    # デモアカウント用
+    def forbid_test_user
+      user = User.find(params[:id])
+      if user.email == "test_user@example.com"
+        redirect_to edit_user_path(user)
+        flash[:warning] = "デモ用アカウントはプロフィール画像のみ編集できます"
+      end
     end
 end
