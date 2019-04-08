@@ -2,6 +2,8 @@
   .card.card-container
     - if @user.provider == "twitter"
       = render "edit_form_for_twitter", user: @user
+    - elsif @user.email == "test_user@example.com" # デモアカウント用
+      = render "edit_form_for_test_user", user: @user
     - else
       = render "edit_form", user: @user
   = link_to "アカウントを削除する場合はこちらから", delete_page_path(@user), class: "invite-text invite-delete text-center mb-5"
