@@ -294,10 +294,10 @@ header {
     line-height: 3rem;
     letter-spacing: .15rem;
   }
-  .btn-info {
-    border-bottom: solid 4px #0f6674;
+  .btn-success {
+    border-bottom: solid 4px #1e7e34;
     &:hover {
-      background-color: #17a2b8;
+      background-color: #28a745;
     }
     &:active {
       -webkit-transform: translateY(4px);
@@ -457,7 +457,7 @@ header {
 }
 .quits-show-wrapper {
   .title {
-    background-color: #ffffd7;
+    background-color: #fff4d2;
   }
 }
 
@@ -481,6 +481,22 @@ header {
           color: white;
         }
       }
+      .nav-make {
+        color: #00b300;
+        border: 1px solid #00b300;
+        &.active {
+          background-color: #00b300;
+          color: white;
+        }
+      }
+      .nav-quit {
+        color: #ffc017;
+        border: 1px solid #ffc017;
+        &.active {
+          background-color: #ffc017;
+          color: black;
+        }
+      }
     }
   }
   .jumbotron {
@@ -496,9 +512,6 @@ header {
     .habit {
       padding: 1.5rem .5rem;
       position: relative;
-      &:hover {
-        background-color: #dedede;
-      }
       a {
         position:absolute;
         top:0;
@@ -515,6 +528,18 @@ header {
         display: inline-block;
         width: 10%;
         font-size: 1.2rem;
+      }
+    }
+    .make {
+      background:linear-gradient(90deg,#e5ffe5 0%,#e5ffe5 2%,#f7f7f7 2%,#f7f7f7 100%);
+      &:hover {
+        background:linear-gradient(90deg,#ccffcc 0%,#ccffcc 2%,#ebebeb 2%,#ebebeb 100%);
+      }
+    }
+    .quit {
+      background:linear-gradient(90deg,#ffeeb9 0%,#ffeeb9 2%,#f7f7f7 2%,#f7f7f7 100%);
+      &:hover {
+        background:linear-gradient(90deg,#ffe89f 0%,#ffe89f 2%,#ebebeb 2%,#ebebeb 100%);
       }
     }
   }
@@ -656,6 +681,7 @@ footer {
     }
     .nav-tabs {
       .nav-item {
+        width : 32%;
         a {
           font-size: .9rem;
         }
@@ -736,12 +762,11 @@ footer {
     }
     .nav-tabs {
       .nav-item {
-        width : 30%;
         a {
           font-size: .7rem;
         }
         .nav-link {
-          padding: .5rem;
+          padding: .5rem 0;
         }
       }
     }
