@@ -5,9 +5,9 @@
     %li.nav-item
       %a.nav-link.active{"href" => "#tab1", "data-toggle" => "tab"} すべて
     %li.nav-item
-      %a.nav-link{"href" => "#tab2", "data-toggle" => "tab"} 身につけたい
+      %a.nav-link.nav-make{"href" => "#tab2", "data-toggle" => "tab"} 身につけたい習慣
     %li.nav-item
-      %a.nav-link{"href" => "#tab3", "data-toggle" => "tab"} やめたい
+      %a.nav-link.nav-quit{"href" => "#tab3", "data-toggle" => "tab"} やめたい習慣
   .jumbotron.mt-5.mx-auto.p-0
     .tab-content
       #tab1.tab-pane.active
@@ -19,8 +19,8 @@
             = link_to "こちら", habits_select_path
             から
         - else
-          - @user.habits.order(created_at: :desc).each do|habit|
-            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+          - @user.habits.order(created_at: :desc).each do |habit|
+            .habit.d-flex.justify-content-around.align-items-center.border-bottom{ class: "#{habit.type == 'Make' ? 'make' : 'quit'}" }
               = link_to "", habit.type == "Make" ? make_path(habit.hashid) : quit_path(habit.hashid)
               %span.title
                 = habit.title
@@ -36,7 +36,7 @@
             から
         - else
           - @user.makes.order(created_at: :desc).each do|make|
-            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+            .habit.make.d-flex.justify-content-around.align-items-center.border-bottom
               = link_to "", make
               %span.title
                 = make.title
@@ -52,7 +52,7 @@
             から
         - else
           - @user.quits.order(created_at: :desc).each do|quit|
-            .habit.d-flex.justify-content-around.align-items-center.border-bottom
+            .habit.quit.d-flex.justify-content-around.align-items-center.border-bottom
               = link_to "", quit
               %span.title
                 = quit.title
