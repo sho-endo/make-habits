@@ -55,7 +55,7 @@ describe "自分ルール機能(quit)", type: :system do
 
     context "全項目を入力したとき" do
       before do
-        visit quits_new_1_path
+        visit quits_title_path
         fill_in "quit[title]", with: "ついYouTubeを見てしまう"
         click_button "次へ"
         click_button "次へ"
@@ -76,13 +76,13 @@ describe "自分ルール機能(quit)", type: :system do
 
     context "項目を入力しなかったとき" do
       before do
-        visit quits_new_1_path
+        visit quits_title_path
         fill_in "quit[title]", with: ""
         click_button "次へ"
       end
 
       it "次のページに遷移できない" do
-        expect(page).to have_current_path quits_new_1_path
+        expect(page).to have_current_path quits_title_path
       end
     end
 
@@ -96,7 +96,7 @@ describe "自分ルール機能(quit)", type: :system do
             rule2: "bar",
           )
         end
-        visit quits_new_1_path
+        visit quits_title_path
       end
 
       it "マイページにリダイレクトされる" do

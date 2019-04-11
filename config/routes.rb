@@ -31,12 +31,12 @@ Rails.application.routes.draw do
   get "/makes/new/8", to: "makes#new8"
   get "/makes/new/9", to: "makes#new9"
 
-  resources :quits, only: [:create, :show, :update]
-  get "/quits/new/1", to: "quits#new1"
+  get "/quits/title", to: "quits#title"
   get "/quits/new/2", to: "quits#new2"
   get "/quits/new/3", to: "quits#new3"
   get "/quits/new/4", to: "quits#new4"
   get "/quits/new/5", to: "quits#new5"
   get "/quits/new/6", to: "quits#new6"
   get "/quits/new/7", to: "quits#new7"
+  resources :quits, only: [:create, :show, :update]
 end

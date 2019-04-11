@@ -48,7 +48,7 @@
             まだ自分ルールがありません
             %br
             ルール作成は
-            = link_to "こちら", quits_new_1_path
+            = link_to "こちら", quits_title_path
             から
         - else
           - @user.quits.order(created_at: :desc).each do|quit|
