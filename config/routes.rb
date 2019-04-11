@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   get "/makes/norm_input", to: "makes#norm_input"
   get "/makes/rule1_description", to: "makes#rule1_description"
   get "/makes/rule1_input", to: "makes#rule1_input"
-  get "/makes/new/6", to: "makes#new6"
+  get "/makes/situation_description", to: "makes#situation_description"
   get "/makes/new/7", to: "makes#new7"
   get "/makes/new/8", to: "makes#new8"
   get "/makes/new/9", to: "makes#new9"
