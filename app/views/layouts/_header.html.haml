@@ -9,7 +9,7 @@
         %ul.navbar-nav.ml-auto
           - if logged_in?
             %li.nav-item
-              = link_to "自分ルールを作成する", habits_select_path, class: "nav-link"
+              = link_to "自分ルール作成", habits_select_path, class: "nav-link"
             %li.nav-item
               = link_to "自分ルール一覧", current_user, class: "nav-link"
             %li.nav-item.dropdown
@@ -21,7 +21,8 @@
                     = image_tag current_user.image_url, class: "header-avatar"
                 - else
                   = image_tag current_user.avatar.url, class: "header-avatar"
-                = current_user.name
+                %span.user-name
+                  = current_user.name
               .dropdown-menu.dropdown-menu-right{"aria-haspopup" => "true"}
                 - if current_user.admin?
                   = link_to "管理ページ", admin_users_path, class: "dropdown-item"
