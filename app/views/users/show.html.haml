@@ -32,7 +32,7 @@
             まだ自分ルールがありません
             %br
             ルール作成は
-            = link_to "こちら", makes_new_1_path
+            = link_to "こちら", makes_title_path
             から
         - else
           - @user.makes.order(created_at: :desc).each do|make|

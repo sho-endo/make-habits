@@ -1,12 +1,12 @@
 class MakesController < HabitsController
   before_action :check_login
-  before_action :forbid_direct_access, except: [:new1, :show]
-  before_action :check_number_of_makes, only: [:new1]
+  before_action :forbid_direct_access, except: [:title, :show]
+  before_action :check_number_of_makes, only: [:title]
   before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7, :new8, :new9]
   before_action :set_rule1, only: [:new6, :new7, :new8, :new9]
   before_action :check_correct_user, only: [:show]
 
-  def new1
+  def title
   end
 
   def new2
@@ -44,7 +44,7 @@ class MakesController < HabitsController
       redirect_to make
     else
       flash[:warning] = "データの保存に失敗しました。お手数ですがもう一度やり直してください。"
-      redirect_to makes_new_1_url
+      redirect_to makes_title_url
     end
   end
 
@@ -65,7 +65,7 @@ class MakesController < HabitsController
     end
 
     def forbid_direct_access
-      redirect_to makes_new_1_path if request.referer.nil?
+      redirect_to makes_title_path if request.referer.nil?
     end
 
     def check_number_of_makes
