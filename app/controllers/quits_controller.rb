@@ -2,8 +2,8 @@ class QuitsController < HabitsController
   before_action :check_login
   before_action :forbid_direct_access, except: [:title, :show]
   before_action :check_number_of_quits, only: [:title]
-  before_action :set_title, only: [:situation_description, :situation_input, :rule1_description, :rule1_input, :rule2_description, :new7]
-  before_action :set_rule1, only: [:rule2_description, :new7]
+  before_action :set_title, only: [:situation_description, :situation_input, :rule1_description, :rule1_input, :rule2_description, :rule2_input]
+  before_action :set_rule1, only: [:rule2_description, :rule2_input]
   before_action :check_correct_user, only: [:show]
 
   def title
@@ -26,7 +26,7 @@ class QuitsController < HabitsController
   def rule2_description
   end
 
-  def new7
+  def rule2_input
   end
 
   def create
