@@ -8,7 +8,7 @@
       %br
       ex）自分の部屋で暇になったら本を読む
 
-    = form_for(:quit, url: quits_new_6_path, method: :get) do |f|
+    = form_for(:quit, url: quits_rule2_description_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.text_area :rule1, required: true, maxlength: 255, class: "form-control mt-5 placeholder", value: "#{@situation}",
                             placeholder: "「やってしまう状況になったら代わりの行動をする」という形で自分ルールを作成してください"
