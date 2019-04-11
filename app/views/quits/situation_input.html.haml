@@ -6,7 +6,7 @@
     %p.lead
       ついやってしまう状況を入力してください
 
-    = form_for(:quit, url: quits_new_4_path, method: :get) do |f|
+    = form_for(:quit, url: quits_rule1_description_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.text_field :situation, required: true, maxlength: 150, class: "form-control mt-5 placeholder",
                                   placeholder: "ex）自分の部屋で暇になったとき"
