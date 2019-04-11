@@ -543,6 +543,27 @@ header {
       }
     }
   }
+  .fixed-rule-make-btn {
+    color: white;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    height: 110px;
+    width: 110px;
+    border-radius: 50%;
+    background: #17a2b8;
+    text-align: center;
+    z-index: 100;
+    &:hover {
+      text-decoration: none;
+    }
+    & div {
+      margin: 12px 0 1px 0;
+    }
+    & i {
+      font-size: 40px;
+    }
+  }
 }
 
 // footer
@@ -663,7 +684,7 @@ footer {
     .lead {
       font-size: 1rem;
     }
-    .btn-info {
+    .btn-success {
       margin: 0!important;
     }
     .btn-warning {
@@ -698,6 +719,16 @@ footer {
         .number {
           font-size: 1.1rem;
         }
+      }
+    }
+    .fixed-rule-make-btn {
+      height: 95px;
+      width: 95px;
+      & div {
+        margin: 10px 0 1px 0;
+      }
+      & i {
+        font-size: 35px;
       }
     }
   }
@@ -790,6 +821,18 @@ footer {
         .number {
           font-size: 1rem;
         }
+      }
+    }
+    .fixed-rule-make-btn {
+      bottom: -15px;
+      right: -15px;
+      height: 80px;
+      width: 80px;
+      & div {
+        margin: 12px 0 1px 0;
+      }
+      & i {
+        font-size: 22px;
       }
     }
   }
