@@ -35,7 +35,7 @@ Rails.application.routes.draw do
   get "/quits/situation_description", to: "quits#situation_description"
   get "/quits/situation_input", to: "quits#situation_input"
   get "/quits/rule1_description", to: "quits#rule1_description"
-  get "/quits/new/5", to: "quits#new5"
+  get "/quits/rule1_input", to: "quits#rule1_input"
   get "/quits/new/6", to: "quits#new6"
   get "/quits/new/7", to: "quits#new7"
   resources :quits, only: [:create, :show, :update]
