@@ -64,8 +64,13 @@ header {
   .navbar {
     padding: .8rem;
   }
-  .navbar-nav li {
-    padding-right: 20px;
+  .navbar-nav {
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+
+    li:not(:last-child) {
+      padding-right: 20px;
+    }
   }
   .nav-link {
     font-size: 1.1em;
@@ -74,7 +79,7 @@ header {
     border-radius: 50%;
     height: 30px;
     width: 30px;
-    margin-right: 1px;
+    margin-right: 2px;
     -webkit-transform: translateY(-2px);
     transform: translateY(-2px);
   }
@@ -84,6 +89,14 @@ header {
       background-color: #f8f8f8;
       color: #000;
     }
+  }
+  .user-name {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: top;
+    max-width: 180px;
   }
 }
 
@@ -546,10 +559,10 @@ header {
   .fixed-rule-make-btn {
     color: white;
     position: fixed;
-    bottom: 15px;
-    right: 15px;
-    height: 110px;
-    width: 110px;
+    bottom: 25px;
+    right: 25px;
+    height: 140px;
+    width: 140px;
     border-radius: 50%;
     background: #17a2b8;
     text-align: center;
@@ -558,10 +571,11 @@ header {
       text-decoration: none;
     }
     & div {
-      margin: 12px 0 1px 0;
+      font-size: 1.1rem;
+      margin: 18px 0 3px 0;
     }
     & i {
-      font-size: 40px;
+      font-size: 55px;
     }
   }
 }
@@ -579,6 +593,12 @@ footer {
 // media query
 // 中デバイス用（小さめパソコン、大きめタブレット）
 @media (max-width: 991.98px) {
+  header {
+    .user-name {
+      max-width: 135px;
+    }
+  }
+
   .img-caption h1 {
     font-size: 350%;
   }
@@ -596,6 +616,22 @@ footer {
   .btn-signup, .btn-update {
     margin-top: 3rem !important;
   }
+
+  .user-show-wrapper {
+    .fixed-rule-make-btn {
+      bottom: 15px;
+      right: 15px;
+      height: 110px;
+      width: 110px;
+      & div {
+        font-size: 1rem;
+        margin: 12px 0 1px 0;
+      }
+      & i {
+        font-size: 40px;
+      }
+    }
+  }
 }
 
 // 小デバイス用（小さめタブレット）
@@ -610,6 +646,9 @@ footer {
     }
     .nav-link {
       padding: .7rem 1rem;
+    }
+    .user-name {
+      max-width: 230px;
     }
   }
   .img-caption h1 {
