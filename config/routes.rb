@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get "/makes/rule1_input", to: "makes#rule1_input"
   get "/makes/situation_description", to: "makes#situation_description"
   get "/makes/situation_input", to: "makes#situation_input"
-  get "/makes/new/8", to: "makes#new8"
+  get "/makes/rule2_description", to: "makes#rule2_description"
   get "/makes/new/9", to: "makes#new9"
   resources :makes, only: [:create, :show, :update]
 
