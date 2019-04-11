@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   get "/makes/new/9", to: "makes#new9"
 
   get "/quits/title", to: "quits#title"
-  get "/quits/new/2", to: "quits#new2"
+  get "/quits/situation_description", to: "quits#situation_description"
   get "/quits/new/3", to: "quits#new3"
   get "/quits/new/4", to: "quits#new4"
   get "/quits/new/5", to: "quits#new5"
