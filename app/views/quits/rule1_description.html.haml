@@ -1,4 +1,4 @@
-.container.makes-new-wrapper
+.container.quits-new-wrapper
   .jumbotron.mt-5.text-center
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
@@ -9,7 +9,7 @@
       %br
       代わりの行動はやめたい習慣と同時にはできないものにしてください。
 
-    = form_for(:quit, url: quits_new_5_path, method: :get) do |f|
+    = form_for(:quit, url: quits_rule1_input_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :situation, value: @situation
       = f.submit "次へ", class: "btn btn-info mt-5"

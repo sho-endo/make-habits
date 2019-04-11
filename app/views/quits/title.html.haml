@@ -8,7 +8,7 @@
       %br
       やめたい習慣はなんですか？
 
-    = form_for(:quit, url: quits_new_2_path, method: :get) do |f|
+    = form_for(:quit, url: quits_situation_description_path, method: :get) do |f|
       = f.text_field :title, required: true, maxlength: 255, class: "form-control mt-5 placeholder", placeholder: "ex）ついYouTubeを見てしまう"
 
       = f.submit "次へ", class: "btn btn-info mt-5"

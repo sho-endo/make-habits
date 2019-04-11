@@ -7,7 +7,7 @@
     %p.lead
       ノルマを入力してください
 
-    = form_for(:make, url: makes_new_4_path, method: :get) do |f|
+    = form_for(:make, url: makes_rule1_description_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.text_field :norm, required: true, maxlength: 150, class: "form-control mt-5 placeholder", placeholder: "ex) １回スクワットをする"
 

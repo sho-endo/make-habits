@@ -1,4 +1,4 @@
-.container.makes-new-wrapper
+.container.quits-new-wrapper
   .jumbotron.mt-5.text-center
     = link_to "javascript:void(0);", onclick: "history.back()", class: "back-icon" do
       = icon("fa", "arrow-left")
@@ -7,7 +7,7 @@
       %br
       コツは今より少なくとも２０秒以上余計に時間がかかるようにすることです。
 
-    = form_for(:quit, url: quits_new_7_path, method: :get) do |f|
+    = form_for(:quit, url: quits_rule2_input_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :rule1, value: @rule1
       = f.submit "次へ", class: "btn btn-info mt-5"

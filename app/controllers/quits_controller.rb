@@ -1,32 +1,32 @@
 class QuitsController < HabitsController
   before_action :check_login
-  before_action :forbid_direct_access, except: [:new1, :show]
-  before_action :check_number_of_quits, only: [:new1]
-  before_action :set_title, only: [:new2, :new3, :new4, :new5, :new6, :new7]
-  before_action :set_rule1, only: [:new6, :new7]
+  before_action :forbid_direct_access, except: [:title, :show]
+  before_action :check_number_of_quits, only: [:title]
+  before_action :set_title, only: [:situation_description, :situation_input, :rule1_description, :rule1_input, :rule2_description, :rule2_input]
+  before_action :set_rule1, only: [:rule2_description, :rule2_input]
   before_action :check_correct_user, only: [:show]
 
-  def new1
+  def title
   end
 
-  def new2
+  def situation_description
   end
 
-  def new3
+  def situation_input
   end
 
-  def new4
+  def rule1_description
     @situation = params[:quit][:situation]
   end
 
-  def new5
+  def rule1_input
     @situation = params[:quit][:situation]
   end
 
-  def new6
+  def rule2_description
   end
 
-  def new7
+  def rule2_input
   end
 
   def create
@@ -36,7 +36,7 @@ class QuitsController < HabitsController
       redirect_to quit
     else
       flash[:warning] = "データの保存に失敗しました。お手数ですがもう一度やり直してください。"
-      redirect_to quits_new_1_url
+      redirect_to quits_title_url
     end
   end
 
@@ -57,7 +57,7 @@ class QuitsController < HabitsController
     end
 
     def forbid_direct_access
-      redirect_to quits_new_1_path if request.referer.nil?
+      redirect_to quits_title_path if request.referer.nil?
     end
 
     def check_number_of_quits
