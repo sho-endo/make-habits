@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   get "/quits/title", to: "quits#title"
   get "/quits/situation_description", to: "quits#situation_description"
-  get "/quits/new/3", to: "quits#new3"
+  get "/quits/situation_input", to: "quits#situation_input"
   get "/quits/new/4", to: "quits#new4"
   get "/quits/new/5", to: "quits#new5"
   get "/quits/new/6", to: "quits#new6"
