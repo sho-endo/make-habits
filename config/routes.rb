@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get "/habits/select", to: "habits#select"
 
   get "/makes/title", to: "makes#title"
-  get "/makes/new/2", to: "makes#new2"
+  get "/makes/norm_description", to: "makes#norm_description"
   get "/makes/new/3", to: "makes#new3"
   get "/makes/new/4", to: "makes#new4"
   get "/makes/new/5", to: "makes#new5"
