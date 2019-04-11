@@ -7,7 +7,7 @@
       %br
       「すでにある習慣を実行したら、ノルマを行う」という形で作ってみましょう。
 
-    = form_for(:make, url: makes_new_5_path, method: :get) do |f|
+    = form_for(:make, url: makes_rule1_input_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.hidden_field :norm, value: @norm
       = f.submit "次へ", class: "btn btn-info mt-5"
