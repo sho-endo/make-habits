@@ -2,7 +2,7 @@ class MakesController < HabitsController
   before_action :check_login
   before_action :forbid_direct_access, except: [:title, :show]
   before_action :check_number_of_makes, only: [:title]
-  before_action :set_title, only: [:norm_description, :new3, :new4, :new5, :new6, :new7, :new8, :new9]
+  before_action :set_title, only: [:norm_description, :norm_input, :new4, :new5, :new6, :new7, :new8, :new9]
   before_action :set_rule1, only: [:new6, :new7, :new8, :new9]
   before_action :check_correct_user, only: [:show]
 
@@ -12,7 +12,7 @@ class MakesController < HabitsController
   def norm_description
   end
 
-  def new3
+  def norm_input
   end
 
   def new4

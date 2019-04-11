@@ -9,6 +9,6 @@
       %br
       「やらないよりはやったほうがいい程度のこと」をノルマにしてみましょう。
 
-    = form_for(:make, url: makes_new_3_path, method: :get) do |f|
+    = form_for(:make, url: makes_norm_input_path, method: :get) do |f|
       = f.hidden_field :title, value: @title
       = f.submit "次へ", class: "btn btn-info mt-5"
