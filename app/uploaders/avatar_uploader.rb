@@ -2,7 +2,8 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [200, 200]
+  # process resize_to_fill: [200, 200]
+  process :fix_exif_rotation_and_strip_exif
 
   # Choose what kind of storage to use for this uploader:
 
@@ -10,6 +11,16 @@ class AvatarUploader < CarrierWave::Uploader::Base
     storage :fog
   else
     storage :file
+  end
+
+  # exif情報を修正して保存
+  def fix_exif_rotation_and_strip_exif
+    manipulate! do |img|
+      img.auto_orient
+      img.strip # rubocop:disable Lint/Void
+      img = yield(img) if block_given?
+      img
+    end
   end
 
   # Override the directory where uploaded files will be stored.
