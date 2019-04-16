@@ -2,7 +2,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   include CarrierWave::MiniMagick
-  process resize_to_fill: [200, 200]
+  # process resize_to_fill: [200, 200]
   process :fix_exif_rotation_and_strip_exif
 
   # Choose what kind of storage to use for this uploader:
